@@ -12,10 +12,11 @@ cmake_policy(VERSION 3.14...3.20)
 project(FairCMakeModules VERSION 1.0.0 LANGUAGES NONE)
 message(STATUS "${PROJECT_NAME} Version ${PROJECT_VERSION}")
 
+include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
 
 set(PACKAGE_INSTALL_DESTINATION
-  share/cmake/${PROJECT_NAME}-${PROJECT_VERSION}
+  ${CMAKE_INSTALL_DATAROOTDIR}/cmake/${PROJECT_NAME}-${PROJECT_VERSION}
 )
 
 add_subdirectory(public)
