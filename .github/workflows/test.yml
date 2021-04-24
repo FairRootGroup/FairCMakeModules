@@ -1,0 +1,15 @@
+---
+name: "Run Test suite"
+on: [push, pull_request]
+jobs:
+  run-simple-tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    # CMake already installed in /usr/local - Wow
+    # - name: Install cmake from OS
+    #   run: |
+    #     sudo apt-get install cmake
+    - name: Run CTest
+      run: |
+        ctest -VV -S *_test.cmake
