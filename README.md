@@ -10,6 +10,24 @@ cmake -S FairCMakeModules -B FairCMakeModules_build -DCMAKE_INSTALL_PREFIX=FairC
 cmake --build FairCMakeModules_build --target install
 ```
 
+## Usage
+
+In your project, discover this package with [`find_package`](https://cmake.org/cmake/help/latest/command/find_package.html#full-signature-and-config-mode) (see the official CMake docs for the full call signature of `find_package`):
+
+```
+find_package(FairCMakeModules REQUIRED)
+```
+
+Then [`include`](https://cmake.org/cmake/help/latest/command/include.html) any module you would like to use
+
+```
+include(<modulename>)
+```
+
+Available modules are:
+
+* [FairFindPackage2](src/modules/FairFindPackage2.cmake)
+
 ## License
 
 ```
