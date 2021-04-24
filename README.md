@@ -1,6 +1,14 @@
 # FairCMakeModules
 CMake Modules developed in the context of various FAIR projects
 
+## Installation
+
+```
+git clone https://github.com/FairRootGroup/FairCMakeModules
+cmake -S FairCMakeModules -B FairCMakeModules_build -DCMAKE_INSTALL_PREFIX=FairCMakeModules_install
+cmake --build FairCMakeModules_build --target install
+```
+
 ## Directory Structure
 
 * `public/`: Things that will end up directly in the installed tree
