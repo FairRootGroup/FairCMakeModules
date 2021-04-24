@@ -9,7 +9,7 @@
 cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
 cmake_policy(VERSION 3.14...3.20)
 
-project(FairCMakeModules VERSION 1.0.0 LANGUAGES CXX)
+project(FairCMakeModules VERSION 0.1.0 LANGUAGES CXX)
 message(STATUS "${PROJECT_NAME} Version ${PROJECT_VERSION}")
 
 include(GNUInstallDirs)
