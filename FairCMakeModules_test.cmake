@@ -23,3 +23,9 @@ list(APPEND options
 ctest_configure(OPTIONS "${options}")
 
 ctest_build(TARGET install)
+ctest_test(RETURN_VALUE _ctest_test_ret_val)
+
+if (_ctest_test_ret_val)
+  message(FATAL_ERROR " \n"
+          "   /!\\  Some tests failed.")
+endif()
