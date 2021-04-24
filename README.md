@@ -10,12 +10,6 @@ cmake -S FairCMakeModules -B FairCMakeModules_build -DCMAKE_INSTALL_PREFIX=FairC
 cmake --build FairCMakeModules_build --target install
 ```
 
-## Source Tree Structure
-
-* `src/modules/`: Modules that are automatically prepended to the `CMAKE_MODULE_PATH`.
-  Note: Files should be either namespaced as `Fair*` or otherwise be
-  unique and not conflict with others.
-
 ## License
 
 ```
@@ -32,4 +26,4 @@ cmake --build FairCMakeModules_build --target install
 
 For comments, questions, and bug reports please [open a github issue](https://github.com/FairRootGroup/FairCMakeModules/issues/new).
 
-For code contributions and bug fixes please create [a github pull request](https://github.com/FairRootGroup/FairCMakeModules/pulls) against the `main` branch.
+For code contributions and bug fixes please create [a github pull request](https://github.com/FairRootGroup/FairCMakeModules/pulls) against the `main` branch. Read our [notes for developers](docs/development.md).
