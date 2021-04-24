@@ -1,4 +1,5 @@
 # FairCMakeModules
+
 CMake Modules developed in the context of various FAIR projects
 
 ## Installation
@@ -9,12 +10,11 @@ cmake -S FairCMakeModules -B FairCMakeModules_build -DCMAKE_INSTALL_PREFIX=FairC
 cmake --build FairCMakeModules_build --target install
 ```
 
-## Directory Structure
+## Source Tree Structure
 
-* `public/`: Things that will end up directly in the installed tree
-  * `public/modules/`: Directly usable cmake modules.
-    Note: Files should be either namespaced as `Fair*` or otherwise be
-    unique and not conflict with others.
+* `src/modules/`: Modules that are automatically prepended to the `CMAKE_MODULE_PATH`.
+  Note: Files should be either namespaced as `Fair*` or otherwise be
+  unique and not conflict with others.
 
 ## License
 
