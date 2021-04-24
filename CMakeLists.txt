@@ -14,12 +14,14 @@ message(STATUS "${PROJECT_NAME} Version ${PROJECT_VERSION}")
 
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
+include(CTest)
 
 set(PACKAGE_INSTALL_DESTINATION
   ${CMAKE_INSTALL_DATAROOTDIR}/cmake/${PROJECT_NAME}-${PROJECT_VERSION}
 )
 
 add_subdirectory(public)
+add_subdirectory(tests)
 
 configure_package_config_file(
   "cmake/${PROJECT_NAME}Config.cmake.in"
