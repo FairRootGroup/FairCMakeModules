@@ -6,8 +6,8 @@
 #                  copied verbatim in the file "LICENSE"                       #
 ################################################################################
 
-cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
-cmake_policy(VERSION 3.14...3.20)
+cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
+cmake_policy(VERSION 3.15...3.20)
 
 project(FairCMakeModules VERSION 0.1.0 LANGUAGES CXX)
 message(STATUS "${PROJECT_NAME} Version ${PROJECT_VERSION}")
@@ -19,6 +19,9 @@ include(CTest)
 set(PACKAGE_INSTALL_DESTINATION
   ${CMAKE_INSTALL_DATAROOTDIR}/cmake/${PROJECT_NAME}-${PROJECT_VERSION}
 )
+string(TOLOWER "${PROJECT_NAME}" PROJECT_NAME_LOWER)
+set(PROJECT_INSTALL_DATADIR "${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME_LOWER}")
+set(PROJECT_INSTALL_PUBLICMODULESDIR "${PROJECT_INSTALL_DATADIR}/modules")
 
 add_subdirectory(public)
 add_subdirectory(tests)
@@ -27,7 +30,8 @@ configure_package_config_file(
   "cmake/${PROJECT_NAME}Config.cmake.in"
   "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
   INSTALL_DESTINATION "${PACKAGE_INSTALL_DESTINATION}"
-  PATH_VARS CMAKE_INSTALL_PREFIX PACKAGE_INSTALL_DESTINATION)
+  PATH_VARS CMAKE_INSTALL_PREFIX PROJECT_INSTALL_PUBLICMODULESDIR
+)
 write_basic_package_version_file(
   "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
   VERSION "${PROJECT_VERSION}"

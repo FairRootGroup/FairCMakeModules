@@ -7,6 +7,8 @@
 ################################################################################
 
 install(
-  DIRECTORY
-    modules
-  DESTINATION ${PACKAGE_INSTALL_DESTINATION}/public)
+  FILES
+  modules/FairFindPackage2.cmake
+
+  DESTINATION "${PROJECT_INSTALL_PUBLICMODULESDIR}"
+)
