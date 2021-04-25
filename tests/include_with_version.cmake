@@ -1,3 +1,4 @@
+#! cmake -P
 ################################################################################
 #    Copyright (C) 2021 GSI Helmholtzzentrum fuer Schwerionenforschung GmbH    #
 #                                                                              #
@@ -6,6 +7,12 @@
 #                  copied verbatim in the file "LICENSE"                       #
 ################################################################################
 
-include(TestLib)
 
-run_module_tests(MODULE FairFindPackage2 PATH "${CMAKE_BINARY_DIR}/src/modules")
+include(CMakePrintHelpers)
+cmake_print_variables(CMAKE_MODULE_PATH)
+cmake_print_variables(MODULE)
+cmake_print_variables(VERSION)
+set(CMAKE_VERSION ${VERSION})
+cmake_print_variables(CMAKE_VERSION)
+
+include(${MODULE})
