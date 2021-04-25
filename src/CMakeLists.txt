@@ -6,9 +6,16 @@
 #                  copied verbatim in the file "LICENSE"                       #
 ################################################################################
 
+file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/modules)
+configure_file(
+  modules/FairFindPackage2.cmake.in
+  ${CMAKE_CURRENT_BINARY_DIR}/modules/FairFindPackage2.cmake
+  @ONLY
+)
+
 install(
   FILES
-  modules/FairFindPackage2.cmake
+  ${CMAKE_CURRENT_BINARY_DIR}/modules/FairFindPackage2.cmake
 
   DESTINATION "${PROJECT_INSTALL_MODULESDIR}"
 )

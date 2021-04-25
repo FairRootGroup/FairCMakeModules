@@ -112,3 +112,8 @@ macro(find_package2 qualifier pkgname)
   set(CMAKE_PREFIX_PATH ${__old_cpp__})
   unset(__old_cpp__)
 endmacro()
+
+# Add oneself as PRIVATE package if used from the @PROJECT_NAME@ package
+if(@PROJECT_NAME@_FOUND)
+  set(PROJECT_PACKAGE_DEPENDENCIES ${PROJECT_PACKAGE_DEPENDENCIES} @PROJECT_NAME@)
+endif()
