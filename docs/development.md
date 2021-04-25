@@ -17,7 +17,16 @@
 ## CMake
 
 * Write function and macro names in lower-case letters and parameter keywords in upper-case, e.g. `list(PREPEND mylist newitem)`
-* Make sure that anything you use will work in the supported CMake version range (see top-level [`CMakeLists.txt`](../CMakeLists.txt)). If it is not possible/feasible, let's discuss bumping the minimum required version.
+* Make sure that anything you use will work in the supported CMake version range:
+   * For project CMake code see the top-level [`CMakeLists.txt`](../CMakeLists.txt)). Bump this minimum required version if necessary.
+   * For installed modules add the following header (Adapt the version as necessary):
+```cmake
+if(CMAKE_VERSION VERSION_LESS 3.10)
+  message(FATAL_ERROR "Module FairFindPackage2 requires CMake 3.10 or later!")
+endif()
+
+include_guard(GLOBAL)
+```
 
 ## Changelog and Releases
 
