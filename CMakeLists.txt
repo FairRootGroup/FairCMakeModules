@@ -15,6 +15,7 @@ message(STATUS "${PROJECT_NAME} Version ${PROJECT_VERSION}")
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
 include(CTest)
+list(PREPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
 set(PACKAGE_INSTALL_DESTINATION
   ${CMAKE_INSTALL_DATAROOTDIR}/cmake/${PROJECT_NAME}-${PROJECT_VERSION}
