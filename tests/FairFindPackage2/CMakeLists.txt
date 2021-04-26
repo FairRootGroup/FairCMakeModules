@@ -6,11 +6,31 @@
 #                  copied verbatim in the file "LICENSE"                       #
 ################################################################################
 
+function(find_package2_mock_pkg pkgname version)
+  set(subdir "${pkgname}-${version}")
+  file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${subdir}")
+  set(PROJECT_NAME "${pkgname}")
+  configure_package_config_file(
+    "MockPkgConfig.cmake.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/${subdir}/${pkgname}Config.cmake"
+    INSTALL_DESTINATION "${subdir}"
+    PATH_VARS CMAKE_INSTALL_PREFIX
+  )
+  write_basic_package_version_file(
+    "${CMAKE_CURRENT_BINARY_DIR}/${subdir}/${pkgname}ConfigVersion.cmake"
+    VERSION "${version}"
+    COMPATIBILITY AnyNewerVersion
+    ARCH_INDEPENDENT)
+endfunction()
+
+find_package2_mock_pkg(FooBar 1.2.3)
+
+
 set(suite "find_package2")
 set(test "simple")
 set(fqtn "${MODULE}.${suite}.${test}")
 add_test(NAME ${fqtn} COMMAND ${CMAKE_COMMAND}
   -D "CMAKE_MODULE_PATH=${PATH}"
   -D "MODULE=${MODULE}"
-  -D "CMAKE_PREFIX_PATH=${CMAKE_CURRENT_SOURCE_DIR}"
+  -D "CMAKE_PREFIX_PATH=${CMAKE_CURRENT_BINARY_DIR};${CMAKE_CURRENT_SOURCE_DIR}"
   -P "${CMAKE_CURRENT_SOURCE_DIR}/${suite}_${test}.cmake")
