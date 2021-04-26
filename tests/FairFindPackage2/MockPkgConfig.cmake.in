@@ -1,4 +1,3 @@
-#! cmake -P
 ################################################################################
 #    Copyright (C) 2021 GSI Helmholtzzentrum fuer Schwerionenforschung GmbH    #
 #                                                                              #
@@ -6,21 +5,9 @@
 #              GNU Lesser General Public Licence (LGPL) version 3,             #
 #                  copied verbatim in the file "LICENSE"                       #
 ################################################################################
-cmake_minimum_required(VERSION 3.15...3.20)
-include(CMakePrintHelpers)
-include(${MODULE})
 
-set(pkg FooBar)
-find_package2(PRIVATE ${pkg})
+@PACKAGE_INIT@
 
-cmake_print_variables(${pkg}_FOUND)
-cmake_print_variables(${pkg}_PREFIX)
-cmake_print_variables(PROJECT_PACKAGE_DEPENDENCIES)
+set_and_check(@PROJECT_NAME@_PREFIX "@PACKAGE_CMAKE_INSTALL_PREFIX@")
 
-if(NOT ${pkg}_FOUND)
-  message(FATAL_ERROR "${pkg} not found")
-endif()
-
-if(NOT ${pkg} IN_LIST PROJECT_PACKAGE_DEPENDENCIES)
-  message(FATAL_ERROR "${pkg} not contained in PROJECT_PACKAGE_DEPENDENCIES")
-endif()
+check_required_components(@PROJECT_NAME@)
