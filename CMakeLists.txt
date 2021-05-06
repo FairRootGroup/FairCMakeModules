@@ -9,7 +9,8 @@
 cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
 cmake_policy(VERSION 3.15...3.20)
 
-project(FairCMakeModules VERSION 0.1.0 LANGUAGES CXX)
+project(FairCMakeModules VERSION 0.1.0 LANGUAGES CXX
+        HOMEPAGE_URL "https://github.com/FairRootGroup/FairCMakeModules")
 message(STATUS "${PROJECT_NAME} Version ${PROJECT_VERSION}")
 
 include(GNUInstallDirs)
@@ -50,3 +51,18 @@ install(
     README.md
     CHANGELOG.md
   DESTINATION "${CMAKE_INSTALL_DOCDIR}")
+
+
+set(CPACK_GENERATOR "DEB")
+set(CPACK_VERBATIM_VARIABLES TRUE)
+set(CPACK_PACKAGE_CONTACT "FairSoft <fairsoft-at-gsi@example.org>")
+set(CPACK_DEBIAN_FILE_NAME "DEB-DEFAULT")
+set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE "all")
+set(CPACK_DEBIAN_PACKAGE_HOMEPAGE "${CMAKE_PROJECT_HOMEPAGE_URL}")
+set(CPACK_SOURCE_GENERATOR "TXZ")
+set(CPACK_SOURCE_PACKAGE_FILE_NAME "${PROJECT_NAME}-${PROJECT_VERSION}")
+set(CPACK_SOURCE_IGNORE_FILES
+  \\.git/
+  build/
+  ".*~$")
+include(CPack)
