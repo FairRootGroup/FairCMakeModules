@@ -24,9 +24,19 @@ function(find_package2_mock_pkg pkgname version)
 endfunction()
 
 find_package2_mock_pkg(FooBar 1.2.3)
+find_package2_mock_pkg(FooDep 2.7.8)
 
 
 set(suite "find_package2")
+set(test "simple")
+set(fqtn "${MODULE}.${suite}.${test}")
+add_test(NAME ${fqtn} COMMAND ${CMAKE_COMMAND}
+  -D "CMAKE_MODULE_PATH=${PATH}"
+  -D "MODULE=${MODULE}"
+  -D "CMAKE_PREFIX_PATH=${CMAKE_CURRENT_BINARY_DIR};${CMAKE_CURRENT_SOURCE_DIR}"
+  -P "${CMAKE_CURRENT_SOURCE_DIR}/${suite}_${test}.cmake")
+
+set(suite "fair_generate_package_dependencies")
 set(test "simple")
 set(fqtn "${MODULE}.${suite}.${test}")
 add_test(NAME ${fqtn} COMMAND ${CMAKE_COMMAND}
