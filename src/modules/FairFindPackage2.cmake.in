@@ -123,3 +123,32 @@ endmacro()
 if(@PROJECT_NAME@_FOUND)
   list(APPEND PROJECT_PACKAGE_DEPENDENCIES @PROJECT_NAME@)
 endif()
+
+
+function(generate_package_dependencies)
+  join("${PROJECT_INTERFACE_PACKAGE_DEPENDENCIES}" " " DEPS)
+  set(PACKAGE_DEPENDENCIES "\
+####### Expanded from @PACKAGE_DEPENDENCIES@ by configure_package_config_file() #######
+
+set(${PROJECT_NAME}_PACKAGE_DEPENDENCIES ${DEPS})
+
+")
+  foreach(dep IN LISTS PROJECT_INTERFACE_PACKAGE_DEPENDENCIES)
+    join("${PROJECT_INTERFACE_${dep}_COMPONENTS}" " " COMPS)
+    if(COMPS)
+      string(CONCAT PACKAGE_DEPENDENCIES ${PACKAGE_DEPENDENCIES} "\
+set(${PROJECT_NAME}_${dep}_COMPONENTS ${COMPS})
+")
+    endif()
+    if(PROJECT_INTERFACE_${dep}_VERSION)
+      string(CONCAT PACKAGE_DEPENDENCIES ${PACKAGE_DEPENDENCIES} "\
+set(${PROJECT_NAME}_${dep}_VERSION ${PROJECT_INTERFACE_${dep}_VERSION})
+")
+    endif()
+  endforeach()
+  string(CONCAT PACKAGE_DEPENDENCIES ${PACKAGE_DEPENDENCIES} "\
+
+#######################################################################################
+")
+set(PACKAGE_DEPENDENCIES ${PACKAGE_DEPENDENCIES} PARENT_SCOPE)
+endfunction()
