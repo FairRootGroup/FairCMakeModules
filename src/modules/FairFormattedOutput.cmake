@@ -6,6 +6,12 @@
 #                  copied verbatim in the file "LICENSE"                       #
 ################################################################################
 
+if(CMAKE_VERSION VERSION_LESS 3.12)
+  message(FATAL_ERROR "Module FairFormattedOutput requires CMake 3.12 or later!")
+endif()
+
+include_guard(GLOBAL)
+
 # Defines some variables with console color escape sequences
 if(NOT WIN32 AND NOT DISABLE_COLOR)
   string(ASCII 27 Esc)
