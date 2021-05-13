@@ -7,6 +7,7 @@
 ################################################################################
 
 include_guard(GLOBAL)
+include(CMakePrintHelpers)
 
 function(run_module_tests)
   cmake_parse_arguments(PARSE_ARGV 0 ARGS "" "MODULE;PATH" "")
@@ -48,5 +49,16 @@ function(run_module_tests)
     set(MODULE ${ARGS_MODULE})
     set(PATH ${path})
     add_subdirectory(${ARGS_MODULE})
+  endif()
+endfunction()
+
+
+# Test that the variable varname has the expected value
+function(assert_var_equal varname expected)
+  if(${varname} STREQUAL expected)
+    message(TRACE "assert_var_equal(${varname} ${expected}) succeeded")
+  else()
+    cmake_print_variables(${varname})
+    message(SEND_ERROR "... assert_var_equal failed, ${varname} should be: ${expected}")
   endif()
 endfunction()
