@@ -16,6 +16,11 @@ All `0.x` releases are beta releases.
 - FairFindPackage2:
   - List ourself (FairCMakeModules) in used packages
   - New function: fair_generate_package_dependencies()
+- New FairFormattedOutput module
+  - ANSI Color Codes
+  - fair_pad string padding function
+    <br/>
+    NOTE: The `COLOR` option is a boolean option now
 
 ## `0.1.0` (beta) - 2021-04-24
 

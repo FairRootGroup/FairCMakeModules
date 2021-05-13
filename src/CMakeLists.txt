@@ -15,7 +15,8 @@ configure_file(
 
 install(
   FILES
-  ${CMAKE_CURRENT_BINARY_DIR}/modules/FairFindPackage2.cmake
+    ${CMAKE_CURRENT_BINARY_DIR}/modules/FairFindPackage2.cmake
+    modules/FairFormattedOutput.cmake
 
   DESTINATION "${PROJECT_INSTALL_MODULESDIR}"
 )
