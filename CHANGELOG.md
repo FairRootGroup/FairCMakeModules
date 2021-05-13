@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 All `0.x` releases are beta releases.
 
+## 0.next (beta) - 2021-XX-XX
+
+### Added / Improved
+
+- FairFindPackage2:
+  - List ourself (FairCMakeModules) in used packages
+  - New function: fair_generate_package_dependencies()
+
 ## `0.1.0` (beta) - 2021-04-24
 
 ### Added
