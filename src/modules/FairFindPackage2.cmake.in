@@ -16,7 +16,6 @@ include_guard(GLOBAL)
 # find_package2(PRIVATE|PUBLIC|INTERFACE|BUNDLED <pkgname>
 #               [VERSION <version>]
 #               [COMPONENTS <list of components>]
-#               [ADD_REQUIREMENTS_OF <list of dep_pgkname>]
 #               [any other option the native find_package supports]...)
 #
 # Wrapper around CMake's native find_package command to add some features and bookkeeping.
@@ -32,6 +31,9 @@ include_guard(GLOBAL)
 # VERSION (selected highest version) and COMPONENTS (deduplicated) args.
 #
 # COMPONENTS and VERSION args are then just passed to the native find_package.
+#
+# The ADD_REQUIREMENTS_OF argument is now a no-op and only remains for compatibility
+# reasons. find_package2 now always merges all known requirements.
 #
 macro(find_package2 qualifier pkgname)
   cmake_parse_arguments(ARGS "" "VERSION" "COMPONENTS;ADD_REQUIREMENTS_OF" ${ARGN})
@@ -49,16 +51,14 @@ macro(find_package2 qualifier pkgname)
   if(ARGS_COMPONENTS)
     list(APPEND __components__ ${ARGS_COMPONENTS})
   endif()
-  if(ARGS_ADD_REQUIREMENTS_OF)
-    foreach(dep_pkgname IN LISTS ARGS_ADD_REQUIREMENTS_OF)
-      if(${dep_pkgname}_${pkgname}_VERSION)
-        list(APPEND __required_versions__ ${${dep_pkgname}_${pkgname}_VERSION})
-      endif()
-      if(${dep_pkgname}_${pkgname}_COMPONENTS)
-        list(APPEND __components__ ${${dep_pkgname}_${pkgname}_COMPONENTS})
-      endif()
-    endforeach()
-  endif()
+  foreach(req_pkgname IN LISTS PROJECT_PACKAGE_DEPENDENCIES)
+    if(${req_pkgname}_${pkgname}_VERSION)
+      list(APPEND __required_versions__ ${${req_pkgname}_${pkgname}_VERSION})
+    endif()
+    if(${req_pkgname}_${pkgname}_COMPONENTS)
+      list(APPEND __components__ ${${req_pkgname}_${pkgname}_COMPONENTS})
+    endif()
+  endforeach()
 
   # select highest required version
   unset(__version__)

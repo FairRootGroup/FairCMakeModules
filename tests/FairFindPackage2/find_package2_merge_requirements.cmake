@@ -6,18 +6,11 @@
 #                  copied verbatim in the file "LICENSE"                       #
 ################################################################################
 
-set(pkgset1 "${CMAKE_CURRENT_BINARY_DIR}/pkgset1")
-mock_pkg(FooBar 1.2.3 DIR ${pkgset1})
-mock_pkg(FooDep 2.7.8 DIR ${pkgset1})
+find_package2(PRIVATE A REQUIRED) # depends on B v0.5.4
+find_package2(PRIVATE B REQUIRED)
 
-set(pkgset2 "${CMAKE_CURRENT_BINARY_DIR}/pkgset2")
-mock_pkg(A 1.0.0 DIR ${pkgset2} DEPS "B:0.5.4")
-mock_pkg(B 1.0.0 DIR ${pkgset2})
+set(A_B_VERSION 2.0) # mock A depending on B v2.0
 
-add_module_test(SUITE "find_package2" TEST "simple"
-                PREFIX_PATH ${pkgset1})
-add_module_test(SUITE "find_package2" TEST "merge_requirements"
-                PREFIX_PATH ${pkgset2})
+find_package2(PRIVATE B VERSION 0.8) # expected to fail
 
-add_module_test(SUITE "fair_generate_package_dependencies" TEST "simple"
-                PREFIX_PATH ${pkgset1})
+assert_false(B_FOUND)
