@@ -119,6 +119,48 @@ macro(find_package2 qualifier pkgname)
   unset(__old_cpp__)
 endmacro()
 
+
+#
+# Loop over all remaining implicit dependencies and "find_package2" them.
+#
+macro(find_package2_implicit_dependencies)
+  cmake_parse_arguments(ARGS "" "" "EXCLUDE" ${ARGN})
+
+  set(__2_new_implicit__ ON)
+  while(__2_new_implicit__)
+    set(__2_new_implicit__ OFF)
+    foreach(dep IN LISTS PROJECT_PACKAGE_DEPENDENCIES)
+      if(NOT dep IN_LIST ARGS_EXCLUDE)
+        foreach(implicit IN LISTS ${dep}_PACKAGE_DEPENDENCIES)
+          if(    NOT implicit IN_LIST PROJECT_PACKAGE_DEPENDENCIES
+             AND NOT implicit IN_LIST ARGS_EXCLUDE)
+            set(__2_new_implicit__ ON)
+            unset(__2_version__)
+            unset(__2_components__)
+            if(${dep}_${implicit}_VERSION)
+              set(__2_components__ VERSION ${${dep}_${implicit}_VERSION})
+            endif()
+            if(${dep}_${implicit}_COMPONENTS)
+              set(__2_components__ COMPONENTS ${${dep}_${implicit}_COMPONENTS})
+            endif()
+            if(dep IN_LIST PROJECT_INTERFACE_PACKAGE_DEPENDENCIES)
+              set(__2_qualifier__ PUBLIC)
+            else()
+              set(__2_qualifier__ PRIVATE)
+            endif()
+            find_package2(${__2_qualifier__} ${implicit} ${__2_version__} ${__2_components__} REQUIRED)
+          endif()
+        endforeach()
+      endif()
+    endforeach()
+  endwhile()
+  unset(__2_qualifier__)
+  unset(__2_new_implicit__)
+  unset(__2_version__)
+  unset(__2_components__)
+endmacro()
+
+
 # Add oneself as PRIVATE package if used from the @PROJECT_NAME@ package
 if(@PROJECT_NAME@_FOUND)
   list(APPEND PROJECT_PACKAGE_DEPENDENCIES @PROJECT_NAME@)

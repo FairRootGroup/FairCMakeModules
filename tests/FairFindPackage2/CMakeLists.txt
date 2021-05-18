@@ -21,3 +21,6 @@ add_module_test(SUITE "find_package2" TEST "merge_requirements"
 
 add_module_test(SUITE "fair_generate_package_dependencies" TEST "simple"
                 PREFIX_PATH ${pkgset1})
+
+add_module_test(SUITE "find_package2_implicit_dependencies" TEST "simple"
+                PREFIX_PATH ${pkgset2})
