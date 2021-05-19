@@ -104,3 +104,38 @@ function(add_module_test)
     -P "${CMAKE_SOURCE_DIR}/tests/test_module.cmake"
   )
 endfunction()
+
+#
+# mock_pkg(<pkgname> <version>
+#          [DIR <directory>])
+#
+# DIR is expecting an absolute directory path to generate the mock pkg in. If
+# it is not given, it defaults to `CMAKE_CURRENT_BINARY_DIR`
+#
+function(mock_pkg pkgname version)
+  cmake_parse_arguments(PARSE_ARGV 2 ARGS "" "DIR" "")
+
+  if(ARGS_DIR)
+    set(__dir__ ${ARGS_DIR})
+  else()
+    set(__dir__ ${CMAKE_CURRENT_BINARY_DIR})
+  endif()
+
+  set(__pkgdir__ "${__dir__}/${pkgname}-${version}")
+  file(MAKE_DIRECTORY ${__pkgdir__})
+
+  set(PROJECT_NAME "${pkgname}")
+  configure_package_config_file(
+    "${CMAKE_SOURCE_DIR}/tests/MockPkgConfig.cmake.in"
+    "${__pkgdir__}/${pkgname}Config.cmake"
+    INSTALL_DESTINATION "${__pkgdir__}"
+    PATH_VARS CMAKE_INSTALL_PREFIX
+  )
+  write_basic_package_version_file(
+    "${__pkgdir__}/${pkgname}ConfigVersion.cmake"
+    VERSION "${version}"
+    COMPATIBILITY AnyNewerVersion
+    ARCH_INDEPENDENT
+  )
+endfunction()
+
