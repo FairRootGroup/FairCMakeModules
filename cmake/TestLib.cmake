@@ -144,15 +144,49 @@ function(add_module_test)
   )
 endfunction()
 
+
+#
+# generate_package_dependencies()
+#
+function(generate_package_dependencies)
+  list(JOIN __PROJECT_INTERFACE_PACKAGE_DEPENDENCIES " " DEPS)
+  set(PACKAGE_DEPENDENCIES "\
+####### Expanded from PACKAGE_DEPENDENCIES by configure_package_config_file() #######
+
+set(${PROJECT_NAME}_PACKAGE_DEPENDENCIES ${DEPS})
+
+")
+  foreach(dep IN LISTS __PROJECT_INTERFACE_PACKAGE_DEPENDENCIES)
+    list(JOIN __PROJECT_INTERFACE_${dep}_COMPONENTS " " COMPS)
+    if(COMPS)
+      string(APPEND PACKAGE_DEPENDENCIES "\
+set(${PROJECT_NAME}_${dep}_COMPONENTS ${COMPS})
+")
+    endif()
+    if(DEFINED __PROJECT_INTERFACE_${dep}_VERSION)
+      string(APPEND PACKAGE_DEPENDENCIES "\
+set(${PROJECT_NAME}_${dep}_VERSION ${__PROJECT_INTERFACE_${dep}_VERSION})
+")
+    endif()
+  endforeach()
+  string(APPEND PACKAGE_DEPENDENCIES "\
+
+#####################################################################################")
+  set(PACKAGE_DEPENDENCIES ${PACKAGE_DEPENDENCIES} PARENT_SCOPE)
+endfunction()
+
+
 #
 # mock_pkg(<pkgname> <version>
-#          [DIR <directory>])
+#          [DIR <directory>]
+#          [DEPS <list of dependencies>])
 #
 # DIR is expecting an absolute directory path to generate the mock pkg in. If
 # it is not given, it defaults to `CMAKE_CURRENT_BINARY_DIR`
+# DEPS expects a list of values of the form `pkgname[:version]`
 #
 function(mock_pkg pkgname version)
-  cmake_parse_arguments(PARSE_ARGV 2 ARGS "" "DIR" "")
+  cmake_parse_arguments(PARSE_ARGV 2 ARGS "" "DIR" "DEPS")
 
   if(ARGS_DIR)
     set(__dir__ ${ARGS_DIR})
@@ -163,7 +197,18 @@ function(mock_pkg pkgname version)
   set(__pkgdir__ "${__dir__}/${pkgname}-${version}")
   file(MAKE_DIRECTORY ${__pkgdir__})
 
+  set(__PROJECT_INTERFACE_PACKAGE_DEPENDENCIES)
+  foreach(dep IN LISTS ARGS_DEPS)
+    string(REGEX MATCH "([^:]+)(:(.*))*" _MATCH "${dep}")
+    list(APPEND __PROJECT_INTERFACE_PACKAGE_DEPENDENCIES ${CMAKE_MATCH_1})
+    if(DEFINED CMAKE_MATCH_3)
+      set(__PROJECT_INTERFACE_${CMAKE_MATCH_1}_VERSION ${CMAKE_MATCH_3})
+    endif()
+  endforeach()
+
   set(PROJECT_NAME "${pkgname}")
+  generate_package_dependencies()
+
   configure_package_config_file(
     "${CMAKE_SOURCE_DIR}/tests/MockPkgConfig.cmake.in"
     "${__pkgdir__}/${pkgname}Config.cmake"
