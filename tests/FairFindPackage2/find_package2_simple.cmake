@@ -1,4 +1,3 @@
-#! cmake -P
 ################################################################################
 #    Copyright (C) 2021 GSI Helmholtzzentrum fuer Schwerionenforschung GmbH    #
 #                                                                              #
@@ -6,9 +5,6 @@
 #              GNU Lesser General Public Licence (LGPL) version 3,             #
 #                  copied verbatim in the file "LICENSE"                       #
 ################################################################################
-cmake_minimum_required(VERSION 3.15...3.20)
-include(CMakePrintHelpers)
-include(${MODULE})
 
 set(pkg FooBar)
 find_package2(PRIVATE ${pkg})
