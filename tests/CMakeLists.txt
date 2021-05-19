@@ -8,5 +8,5 @@
 
 include(TestLib)
 
-run_module_tests(MODULE FairFindPackage2 PATH "${CMAKE_BINARY_DIR}/src/modules")
-run_module_tests(MODULE FairFormattedOutput)
+add_module_tests(MODULE FairFindPackage2 PATH "${CMAKE_BINARY_DIR}/src/modules")
+add_module_tests(MODULE FairFormattedOutput)
