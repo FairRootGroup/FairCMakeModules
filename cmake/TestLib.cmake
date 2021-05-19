@@ -64,6 +64,28 @@ function(assert_var_equal varname expected)
 endfunction()
 
 
+# Test that the variable is true-thy
+function(assert_true varname)
+  if(${varname})
+    message(TRACE "assert_true(${varname}) succeeded")
+  else()
+    cmake_print_variables(${varname})
+    message(SEND_ERROR "... assert_true failed, ${varname} not true-thy")
+  endif()
+endfunction()
+
+
+# Test that the variable is false-y
+function(assert_false varname)
+  if(NOT ${varname})
+    message(TRACE "assert_false(${varname}) succeeded")
+  else()
+    cmake_print_variables(${varname})
+    message(SEND_ERROR "... assert_false failed, ${varname} not false-y")
+  endif()
+endfunction()
+
+
 #
 # add_module_tests(SUITE <suite> TEST <test>
 #                  [MODULE <module>]
