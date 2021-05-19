@@ -9,7 +9,7 @@
 include_guard(GLOBAL)
 include(CMakePrintHelpers)
 
-function(run_module_tests)
+function(add_module_tests)
   cmake_parse_arguments(PARSE_ARGV 0 ARGS "" "MODULE;PATH" "")
 
   if(ARGS_PATH)
