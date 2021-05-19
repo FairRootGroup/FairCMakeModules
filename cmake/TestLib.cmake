@@ -62,3 +62,45 @@ function(assert_var_equal varname expected)
     message(SEND_ERROR "... assert_var_equal failed, ${varname} should be: ${expected}")
   endif()
 endfunction()
+
+
+#
+# most useful to call within a CMakeLists.txt added via add_module_tests
+#
+function(add_module_test)
+  cmake_parse_arguments(PARSE_ARGV 0 ARGS "" "MODULE;SUITE;TEST" "MODULE_PATH")
+
+  if(ARGS_MODULE)
+    set(__module__ ${ARGS_MODULE})
+  elseif(DEFINED MODULE)
+    set(__module__ ${MODULE})
+  else()
+    message(SEND_ERROR "No MODULE defined")
+    return()
+  endif()
+
+  if(NOT ARGS_SUITE)
+    message(SEND_ERROR "No SUITE defined")
+    return()
+  endif()
+
+  if(NOT ARGS_TEST)
+    message(SEND_ERROR "No TEST defined")
+    return()
+  endif()
+
+  set(__fqtn__ "${__module__}.${ARGS_SUITE}.${ARGS_TEST}")
+
+  if(ARGS_MODULE_PATH OR PATH OR CMAKE_MODULE_PATH)
+    list(APPEND __module_path__ ${ARGS_MODULE_PATH} ${PATH} ${CMAKE_MODULE_PATH})
+    list(JOIN __module_path__ ";" __module_path__)
+  endif()
+
+  add_test(NAME ${__fqtn__} COMMAND ${CMAKE_COMMAND}
+    -D "CMAKE_MODULE_PATH=${__module_path__}"
+    -D "MODULE=${__module__}"
+    -D "CMAKE_PREFIX_PATH=${CMAKE_CURRENT_BINARY_DIR};${CMAKE_CURRENT_SOURCE_DIR}"
+    -D "TEST=${CMAKE_CURRENT_SOURCE_DIR}/${ARGS_SUITE}_${ARGS_TEST}.cmake"
+    -P "${CMAKE_SOURCE_DIR}/tests/test_module.cmake"
+  )
+endfunction()
