@@ -1,0 +1,17 @@
+****************
+FairCMakeModules
+****************
+
+This project maintains CMake Modules developed in the context of various FAIR projects.
+
+.. toctree::
+   :caption: General
+   :maxdepth: 1
+
+   installation
+   support
+   license
+
+.. toctree::
+   :caption: Modules
+   :maxdepth: 1
