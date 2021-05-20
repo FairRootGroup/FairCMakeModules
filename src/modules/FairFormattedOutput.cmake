@@ -12,7 +12,52 @@ endif()
 
 include_guard(GLOBAL)
 
-# Defines some variables with console color escape sequences
+#[=======================================================================[.rst:
+*******************
+FairFormattedOutput
+*******************
+
+.. versionadded:: 0.2.0
+
+Requires CMake 3.12 or later.
+
+.. contents::
+   :local:
+
+---------
+
+On inclusion
+============
+
+Defines variables with `ANSI escape codes`_ useful for coloring logs:
+
+==================== =============
+CMake variable       ANSI code
+==================== =============
+:variable:`CR`       ``ESC[m``
+:variable:`CB`       ``ESC[1m``
+:variable:`Red`      ``ESC[31m``
+:variable:`Green`    ``ESC[32m``
+:variable:`Yellow`   ``ESC[33m``
+:variable:`Blue`     ``ESC[34m``
+:variable:`Magenta`  ``ESC[35m``
+:variable:`Cyan`     ``ESC[36m``
+:variable:`White`    ``ESC[37m``
+:variable:`BRed`     ``ESC[1;31m``
+:variable:`BGreen`   ``ESC[1;32m``
+:variable:`BYellow`  ``ESC[1;33m``
+:variable:`BBlue`    ``ESC[1;34m``
+:variable:`BMagenta` ``ESC[1;35m``
+:variable:`BCyan`    ``ESC[1;36m``
+:variable:`BWhite`   ``ESC[1;37m``
+==================== =============
+
+Disable by setting :variable:`DISABLE_COLOR` to true.
+
+.. _`ANSI escape codes`: https://en.wikipedia.org/wiki/ANSI_escape_code#3-bit_and_4-bit
+
+#]=======================================================================]
+
 if(NOT WIN32 AND NOT DISABLE_COLOR)
   string(ASCII 27 Esc)
   set(CR       "${Esc}[m")
@@ -32,6 +77,22 @@ if(NOT WIN32 AND NOT DISABLE_COLOR)
   set(BCyan    "${Esc}[1;36m")
   set(BWhite   "${Esc}[1;37m")
 endif()
+
+#[=======================================================================[.rst:
+---------
+
+``fair_pad()``
+===================
+
+.. code-block:: cmake
+
+  fair_pad(<str> <width> <char> <out> [LEFT] [COLOR])
+
+Pad given ``<str>`` to ``<width>`` with ``<char>`` and populate the result in
+the variable with name given in ``<out>``. Optionally, pad from the left with
+``LEFT`` and filter out ANSI color codes with ``COLOR``.
+
+#]=======================================================================]
 
 function(fair_pad str width char out)
   cmake_parse_arguments(ARGS "LEFT;COLOR" "" "" ${ARGN})

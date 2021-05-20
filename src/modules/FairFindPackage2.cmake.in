@@ -12,29 +12,73 @@ endif()
 
 include_guard(GLOBAL)
 
-#
-# find_package2(PRIVATE|PUBLIC|INTERFACE|BUNDLED <pkgname>
-#               [VERSION <version>]
-#               [COMPONENTS <list of components>]
-#               [any other option the native find_package supports]...)
-#
-# Wrapper around CMake's native find_package command to add some features and bookkeeping.
-#
-# The qualifier (PRIVATE|PUBLIC|INTERFACE|BUNDLED) to the package to populate
-# the variables PROJECT_[INTERFACE]_<pkgname>_([VERSION]|[COMPONENTS]|PACKAGE_DEPENDENCIES)
-# accordingly. This bookkeeping information is used to print our dependency found summary
-# table and to generate a part of our CMake package. BUNDLED decays to PUBLIC if the variable
-# <pkgname>_BUNDLED is false and to PRIVATE otherwise.
-#
-# When a dependending package is listed with ADD_REQUIREMENTS_OF the variables
-# <dep_pkgname>_<pkgname>_VERSION|COMPONENTS are looked up to and added to the native
-# VERSION (selected highest version) and COMPONENTS (deduplicated) args.
-#
-# COMPONENTS and VERSION args are then just passed to the native find_package.
-#
-# The ADD_REQUIREMENTS_OF argument is now a no-op and only remains for compatibility
-# reasons. find_package2 now always merges all known requirements.
-#
+#[=======================================================================[.rst:
+****************
+FairFindPackage2
+****************
+.. versionadded:: 0.1.0
+
+Requires CMake 3.12 or later.
+
+.. contents::
+   :local:
+
+---------
+
+On inclusion
+============
+
+.. versionadded:: 0.2.0
+
+Add this module as a ``PRIVATE`` package dependency if included from the
+@PROJECT_NAME@ package.
+
+#]=======================================================================]
+
+if(@PROJECT_NAME@_FOUND)
+  list(APPEND PROJECT_PACKAGE_DEPENDENCIES @PROJECT_NAME@)
+endif()
+
+#[=======================================================================[.rst:
+---------
+
+``find_package2()``
+===================
+
+Wrapper around CMake's native :command:`find_package` command to add some
+features and bookkeeping.
+
+.. code-block:: cmake
+
+  find_package2(PRIVATE|PUBLIC|INTERFACE|BUNDLED <pkgname>
+                [VERSION <version>]
+                [COMPONENTS <component> [<component>...]]
+                [ADD_REQUIREMENTS_OF <dep_pkgname> [<dep_pkgname>...]]
+                [<any other native `find_package` option>...])
+
+
+The qualifier (\ ``PRIVATE|PUBLIC|INTERFACE|BUNDLED``\ ) is used to
+populate the variables
+:variable:`PROJECT_[INTERFACE]_<pkgname>_([VERSION]|[COMPONENTS]|PACKAGE_DEPENDENCIES)`
+accordingly. This bookkeeping information is used to print a dependencies
+found summary table and in the generation of a CMake package. ``BUNDLED``
+decays to ``PUBLIC`` if the variable `<pkgname>_BUNDLED` is false and to
+``PRIVATE`` otherwise.
+
+When a dependending package is listed with ``ADD_REQUIREMENTS_OF`` the
+variables :variable:`<dep_pkgname>_<pkgname>_VERSION|COMPONENTS` are looked
+up and merged with ``VERSION`` (selected highest version) and ``COMPONENTS``
+(deduplicated) requirements. ``COMPONENTS`` and ``VERSION`` args are then
+just passed to :command:`find_package`.
+
+.. versionchanged:: 0.2.0
+
+The ``ADD_REQUIREMENTS_OF`` argument is now a no-op and only remains for
+compatibility reasons. :command:`find_package2` now always merges all known
+requirements.
+
+#]=======================================================================]
+
 macro(find_package2 qualifier pkgname)
   cmake_parse_arguments(ARGS "" "VERSION" "COMPONENTS;ADD_REQUIREMENTS_OF" ${ARGN})
 
@@ -119,10 +163,25 @@ macro(find_package2 qualifier pkgname)
   unset(__old_cpp__)
 endmacro()
 
+#[=======================================================================[.rst:
+---------
 
-#
-# Loop over all remaining implicit dependencies and "find_package2" them.
-#
+``find_package2_implicit_dependencies()``
+=========================================
+
+.. versionadded:: 0.2.0
+
+Loop over all remaining implicit dependencies and :command:`find_package2`
+them.
+
+.. code-block:: cmake
+
+  find_package2_implicit_dependencies([EXCLUDE <pkg> [<pkg>...]])
+
+Listed packages with ``EXCLUDE`` are filtered out.
+
+#]=======================================================================]
+
 macro(find_package2_implicit_dependencies)
   cmake_parse_arguments(ARGS "" "" "EXCLUDE" ${ARGN})
 
@@ -160,21 +219,25 @@ macro(find_package2_implicit_dependencies)
   unset(__2_components__)
 endmacro()
 
+#[=======================================================================[.rst:
+---------
 
-# Add oneself as PRIVATE package if used from the @PROJECT_NAME@ package
-if(@PROJECT_NAME@_FOUND)
-  list(APPEND PROJECT_PACKAGE_DEPENDENCIES @PROJECT_NAME@)
-endif()
+``fair_generate_package_dependencies()``
+========================================
 
+.. versionadded:: 0.2.0
 
-#
-# fair_generate_package_dependencies()
-#
-# From the public dependencies (marked using find_package2)
-# generate a snippet (PACKAGE_DEPENDENCIES) that can be
-# included in a cmake package *Config.cmake to export the
-# needs of the current package
-#
+.. code-block:: cmake
+
+  find_generate_package_dependencies()
+
+Populates the variable :variable:`PACKAGE_DEPENDENCIES` with a CMake snippet
+from the public dependencies (read from
+:variable:`PROJECT_INTERFACE_PACKAGE_DEPENDENCIES`) that can be included in a
+CMake package config file to export its package dependencies.
+
+#]=======================================================================]
+
 function(fair_generate_package_dependencies)
   list(JOIN PROJECT_INTERFACE_PACKAGE_DEPENDENCIES " " DEPS)
   set(PACKAGE_DEPENDENCIES "\

@@ -13,6 +13,10 @@ project(FairCMakeModules VERSION 0.1.0 LANGUAGES CXX
         HOMEPAGE_URL "https://github.com/FairRootGroup/FairCMakeModules")
 message(STATUS "${PROJECT_NAME} Version ${PROJECT_VERSION}")
 
+if(NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE Release)
+endif()
+
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
 include(CTest)
@@ -27,6 +31,11 @@ set(PROJECT_INSTALL_MODULESDIR "${PROJECT_INSTALL_DATADIR}/modules")
 
 add_subdirectory(src)
 add_subdirectory(tests)
+
+find_program(SPHINX_EXECUTABLE NAMES sphinx-build)
+if(SPHINX_EXECUTABLE)
+  add_subdirectory(docs)
+endif()
 
 configure_package_config_file(
   "cmake/${PROJECT_NAME}Config.cmake.in"
@@ -49,7 +58,7 @@ install(
 install(
   FILES
     README.md
-    CHANGELOG.md
+    CHANGELOG.rst
   DESTINATION "${CMAKE_INSTALL_DOCDIR}")
 
 
