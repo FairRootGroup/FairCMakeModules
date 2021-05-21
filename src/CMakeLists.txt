@@ -17,6 +17,7 @@ install(
   FILES
     ${CMAKE_CURRENT_BINARY_DIR}/modules/FairFindPackage2.cmake
     modules/FairFormattedOutput.cmake
+    modules/FairSummary.cmake
 
   DESTINATION "${PROJECT_INSTALL_MODULESDIR}"
 )
