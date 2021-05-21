@@ -40,6 +40,10 @@ if(build IN_LIST STEPS)
   ctest_build()
 endif()
 
+if(docs IN_LIST STEPS)
+  ctest_build(TARGET docs)
+endif()
+
 if(install IN_LIST STEPS)
   ctest_build(TARGET install)
 endif()
