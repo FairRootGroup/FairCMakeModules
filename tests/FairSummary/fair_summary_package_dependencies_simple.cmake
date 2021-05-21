@@ -6,8 +6,13 @@
 #                  copied verbatim in the file "LICENSE"                       #
 ################################################################################
 
-include(TestLib)
+include(FairFindPackage2)
+include(TestLibMockMessage)
 
-add_module_tests(MODULE FairFindPackage2 PATH "${CMAKE_BINARY_DIR}/src/modules")
-add_module_tests(MODULE FairFormattedOutput)
-add_module_tests(MODULE FairSummary)
+find_package2(PUBLIC FooBar VERSION 1.1 REQUIRED)
+find_package2(PRIVATE FooDep)
+
+fair_summary_package_dependencies()
+
+assert_regex_in_message_lines("STATUS: +FooBar +1.2.3 +[(]>= 1[.]1[)] +[^\n]+/FairSummary/pkgset1")
+assert_regex_in_message_lines("STATUS: +FooDep +2.7.8 +[^\n]+/FairSummary/pkgset1")
