@@ -207,6 +207,7 @@ function(mock_pkg pkgname version)
   endforeach()
 
   set(PROJECT_NAME "${pkgname}")
+  set(CMAKE_INSTALL_PREFIX "${__dir__}")
   generate_package_dependencies()
 
   configure_package_config_file(
