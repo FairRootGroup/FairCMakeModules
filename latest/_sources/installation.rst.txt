@@ -35,7 +35,7 @@ and continue with ::
 
   brew install faircmakemodules
 
-Find the ``brew`` package formula `here <https://github.com/FairRootGroup/homebrew-fairsoft/blob/master/Formula/faircmakemodules.rb>`_.
+Find the ``brew`` package formula `here <https://github.com/FairRootGroup/homebrew-fairsoft/blob/master/Formula/faircmakemodules.rb>`__.
 
 
 Fedora
@@ -49,7 +49,7 @@ and continue with ::
 
   sudo dnf install faircmakemodules
 
-Find the RPM package source `here <https://git.gsi.de/SDE/packages/faircmakemodules>`_.
+Find the RPM package source `here <https://git.gsi.de/SDE/packages/faircmakemodules>`__.
 
 
 .. _Git: https://git-scm.com/

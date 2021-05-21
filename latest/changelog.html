@@ -13,7 +13,6 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/twemoji.css" type="text/css" />
 
   
   
@@ -34,8 +33,6 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js"></script>
-        <script src="_static/twemoji.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -104,7 +101,18 @@
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Changelog</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#unreleased">Unreleased</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#changed">Changed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#new">New</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-1-0-beta-2021-04-24"><strong>v0.1.0 (beta)</strong> 2021-04-24</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">New</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">Modules</span></p>
 <ul>
@@ -115,7 +123,11 @@
 <li class="toctree-l2"><a class="reference internal" href="module/FairFindPackage2.html#fair-generate-package-dependencies"><code class="docutils literal notranslate"><span class="pre">fair_generate_package_dependencies()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="module/FairFormattedOutput.html">FairFormattedOutput</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module/FairFormattedOutput.html">FairFormattedOutput</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="module/FairFormattedOutput.html#on-inclusion">On inclusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module/FairFormattedOutput.html#fair-pad"><code class="docutils literal notranslate"><span class="pre">fair_pad()</span></code></a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">Contributing</span></p>
 <ul>
@@ -196,7 +208,38 @@
             
   <div class="section" id="changelog">
 <h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h1>
-<p><strong>TODO</strong></p>
+<div class="section" id="unreleased">
+<h2>Unreleased<a class="headerlink" href="#unreleased" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="changed">
+<h3>Changed<a class="headerlink" href="#changed" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><span class="target" id="index-0-command:find_package2"></span><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">find_package2()</span></code>’s option <code class="docutils literal notranslate"><span class="pre">ADD_REQUIREMENTS_OF</span></code> is now a no-op. All
+known requirements are merged by default.</p></li>
+</ul>
+</div>
+<div class="section" id="new">
+<h3>New<a class="headerlink" href="#new" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>In module <span class="target" id="index-0-module:FairFindPackage2"></span><a class="reference internal" href="module/FairFindPackage2.html#module:FairFindPackage2" title="FairFindPackage2"><code class="xref cmake cmake-module docutils literal notranslate"><span class="pre">FairFindPackage2</span></code></a></p>
+<ul>
+<li><p>List FairCMakeModules as package dependency</p></li>
+<li><p>Macro <span class="target" id="index-0-command:find_package2_implicit_dependencies"></span><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">find_package2_implicit_dependencies()</span></code></p></li>
+<li><p>Function <span class="target" id="index-0-command:fair_generate_package_dependencies"></span><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">fair_generate_package_dependencies()</span></code></p></li>
+</ul>
+</li>
+<li><p>Module <span class="target" id="index-0-module:FairFormattedOutput"></span><a class="reference internal" href="module/FairFormattedOutput.html#module:FairFormattedOutput" title="FairFormattedOutput"><code class="xref cmake cmake-module docutils literal notranslate"><span class="pre">FairFormattedOutput</span></code></a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="v0-1-0-beta-2021-04-24">
+<h2><strong>v0.1.0 (beta)</strong> 2021-04-24<a class="headerlink" href="#v0-1-0-beta-2021-04-24" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>New<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Module <span class="target" id="index-1-module:FairFindPackage2"></span><a class="reference internal" href="module/FairFindPackage2.html#module:FairFindPackage2" title="FairFindPackage2"><code class="xref cmake cmake-module docutils literal notranslate"><span class="pre">FairFindPackage2</span></code></a></p></li>
+</ul>
+</div>
+</div>
 </div>
 
 

@@ -15,6 +15,7 @@ This project maintains CMake Modules developed in the context of various `FAIR`_
    /license
    /changelog
 
+.. _`modules_list`:
 .. toctree::
    :caption: Modules
    :maxdepth: 1

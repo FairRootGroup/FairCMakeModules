@@ -13,7 +13,6 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/twemoji.css" type="text/css" />
 
   
   
@@ -34,8 +33,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js"></script>
-        <script src="../_static/twemoji.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -104,7 +101,18 @@
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#unreleased">Unreleased</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changelog.html#changed">Changed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../changelog.html#new">New</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-1-0-beta-2021-04-24"><strong>v0.1.0 (beta)</strong> 2021-04-24</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../changelog.html#id1">New</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">Modules</span></p>
 <ul class="current">
@@ -115,7 +123,11 @@
 <li class="toctree-l2"><a class="reference internal" href="FairFindPackage2.html#fair-generate-package-dependencies"><code class="docutils literal notranslate"><span class="pre">fair_generate_package_dependencies()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">FairFormattedOutput</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">FairFormattedOutput</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#on-inclusion">On inclusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fair-pad"><code class="docutils literal notranslate"><span class="pre">fair_pad()</span></code></a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">Contributing</span></p>
 <ul>
@@ -196,7 +208,93 @@
             
   <div class="section" id="fairformattedoutput">
 <span id="module:FairFormattedOutput"></span><h1>FairFormattedOutput<a class="headerlink" href="#fairformattedoutput" title="Permalink to this headline">¶</a></h1>
-<p><strong>TODO</strong></p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.2.0.</span></p>
+</div>
+<p>Requires CMake 3.12 or later.</p>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#on-inclusion" id="id1">On inclusion</a></p></li>
+<li><p><a class="reference internal" href="#fair-pad" id="id2"><code class="docutils literal notranslate"><span class="pre">fair_pad()</span></code></a></p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="on-inclusion">
+<h2><a class="toc-backref" href="#id1">On inclusion</a><a class="headerlink" href="#on-inclusion" title="Permalink to this headline">¶</a></h2>
+<p>Defines variables with <a class="reference external" href="https://en.wikipedia.org/wiki/ANSI_escape_code#3-bit_and_4-bit">ANSI escape codes</a> useful for coloring logs:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 61%" />
+<col style="width: 39%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>CMake variable</p></th>
+<th class="head"><p>ANSI code</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="target" id="index-0-variable:CR"></span><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">CR</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ESC[m</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="target" id="index-0-variable:CB"></span><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">CB</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ESC[1m</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="target" id="index-0-variable:Red"></span><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">Red</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ESC[31m</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="target" id="index-0-variable:Green"></span><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">Green</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ESC[32m</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="target" id="index-0-variable:Yellow"></span><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">Yellow</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ESC[33m</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="target" id="index-0-variable:Blue"></span><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">Blue</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ESC[34m</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="target" id="index-0-variable:Magenta"></span><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">Magenta</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ESC[35m</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="target" id="index-0-variable:Cyan"></span><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">Cyan</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ESC[36m</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="target" id="index-0-variable:White"></span><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">White</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ESC[37m</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="target" id="index-0-variable:BRed"></span><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">BRed</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ESC[1;31m</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="target" id="index-0-variable:BGreen"></span><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">BGreen</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ESC[1;32m</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="target" id="index-0-variable:BYellow"></span><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">BYellow</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ESC[1;33m</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="target" id="index-0-variable:BBlue"></span><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">BBlue</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ESC[1;34m</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="target" id="index-0-variable:BMagenta"></span><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">BMagenta</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ESC[1;35m</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="target" id="index-0-variable:BCyan"></span><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">BCyan</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ESC[1;36m</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="target" id="index-0-variable:BWhite"></span><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">BWhite</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ESC[1;37m</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>Disable by setting <span class="target" id="index-0-variable:DISABLE_COLOR"></span><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">DISABLE_COLOR</span></code> to true.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="fair-pad">
+<h2><a class="toc-backref" href="#id2"><code class="docutils literal notranslate"><span class="pre">fair_pad()</span></code></a><a class="headerlink" href="#fair-pad" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">fair_pad(</span><span class="nv">&lt;str&gt;</span><span class="w"> </span><span class="nv">&lt;width&gt;</span><span class="w"> </span><span class="nv">&lt;char&gt;</span><span class="w"> </span><span class="nv">&lt;out&gt;</span><span class="w"> </span><span class="p">[</span><span class="no">LEFT</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="no">COLOR</span><span class="p">]</span><span class="nf">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Pad given <code class="docutils literal notranslate"><span class="pre">&lt;str&gt;</span></code> to <code class="docutils literal notranslate"><span class="pre">&lt;width&gt;</span></code> with <code class="docutils literal notranslate"><span class="pre">&lt;char&gt;</span></code> and populate the result in
+the variable with name given in <code class="docutils literal notranslate"><span class="pre">&lt;out&gt;</span></code>. Optionally, pad from the left with
+<code class="docutils literal notranslate"><span class="pre">LEFT</span></code> and filter out ANSI color codes with <code class="docutils literal notranslate"><span class="pre">COLOR</span></code>.</p>
+</div>
 </div>
 
 
