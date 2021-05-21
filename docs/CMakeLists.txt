@@ -6,6 +6,10 @@
 #                  copied verbatim in the file "LICENSE"                       #
 ################################################################################
 
+if(NOT DOCS_VERSION)
+  set(DOCS_VERSION latest)
+endif()
+
 configure_file(conf.py.in
   "${CMAKE_CURRENT_BINARY_DIR}/conf.py" @ONLY
 )

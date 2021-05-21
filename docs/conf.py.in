@@ -21,8 +21,8 @@ project = '@PROJECT_NAME@'
 copyright = '2021 GSI Helmholtzzentrum fuer Schwerionenforschung GmbH'
 
 # The full version, including alpha/beta/rc tags
-version = 'latest'
-release = 'latest'
+version = '@DOCS_VERSION@'
+release = '@DOCS_VERSION@'
 
 
 # -- General configuration ---------------------------------------------------
@@ -58,10 +58,9 @@ html_theme_options = {
   'includehidden': True,
   'titles_only': False,
 }
-html_baseurl = 'https://fairrootgroup.github.io/@PROJECT_NAME@/latest'
-html_title = 'FairCMakeModules %s Documentation' % release
-html_short_title = '%s Documentation' % release
-sphinxemoji_style = 'twemoji'
+html_baseurl = 'https://fairrootgroup.github.io/@PROJECT_NAME@/@DOCS_VERSION@'
+html_title = '@PROJECT_NAME@ %s' % release
+html_short_title = release
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
