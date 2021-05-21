@@ -11,10 +11,36 @@ if(CMAKE_VERSION VERSION_LESS 3.12)
 endif()
 
 include_guard(GLOBAL)
-
 include(FairFormattedOutput)
 
+#[=======================================================================[.rst:
+***********
+FairSummary
+***********
 
+.. versionadded:: 0.2.0
+
+Requires CMake 3.12 or later.
+
+Depends on :module:`FairFormattedOutput` (and includes it
+automatically).
+#]=======================================================================]
+
+
+#[=======================================================================[.rst:
+---------
+
+``fair_summary_global_cxx_flags_standard()``
+============================================
+
+.. code-block:: cmake
+
+  fair_summary_global_cxx_flags_standard()
+
+If :variable:`CMAKE_CXX_FLAGS`, or :variable:`CMAKE_CXX_STANDARD` are set,
+their values are displayed in a nice tabular way.
+
+#]=======================================================================]
 function(fair_summary_global_cxx_flags_standard)
   if(CMAKE_CXX_FLAGS OR CMAKE_CXX_STANDARD)
     message(STATUS "  ")
@@ -28,6 +54,21 @@ function(fair_summary_global_cxx_flags_standard)
 endfunction()
 
 
+#[=======================================================================[.rst:
+---------
+
+``fair_summary_build_types()``
+==============================
+
+.. code-block:: cmake
+
+  fair_summary_build_types()
+
+Display the available Build Types from
+:variable:`CMAKE_CONFIGURATION_TYPES` in a nice tabular way and
+mark the type, that the user has chosen.
+
+#]=======================================================================]
 function(fair_summary_build_types)
   if(CMAKE_CONFIGURATION_TYPES)
     message(STATUS "  ")
@@ -50,6 +91,24 @@ function(fair_summary_build_types)
 endfunction()
 
 
+#[=======================================================================[.rst:
+---------
+
+``fair_summary_package_dependencies()``
+=======================================
+
+.. code-block:: cmake
+
+  fair_summary_package_dependencies()
+
+:command:`find_package2` keeps track of all the found
+packages. This function displays them (including found
+version, requested version, and install prefix) in a nice
+tabulary way.
+
+The prefix column prints the value of :variable:`<pkgname>_PREFIX`.
+
+#]=======================================================================]
 function(fair_summary_package_dependencies)
   if(PROJECT_PACKAGE_DEPENDENCIES)
     message(STATUS "  ")

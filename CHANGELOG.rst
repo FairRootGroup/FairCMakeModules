@@ -23,6 +23,9 @@ New
 
 * Module :module:`FairFormattedOutput`
 
+* Module :module:`FairSummary`
+
+
 **v0.1.0 (beta)** 2021-04-24
 ============================
 
