@@ -6,8 +6,12 @@
 #                  copied verbatim in the file "LICENSE"                       #
 ################################################################################
 
-include(TestLib)
+include(TestLibMockMessage)
 
-add_module_tests(MODULE FairFindPackage2 PATH "${CMAKE_BINARY_DIR}/src/modules")
-add_module_tests(MODULE FairFormattedOutput)
-add_module_tests(MODULE FairSummary)
+set(CMAKE_CXX_FLAGS "-DTEST=Debug")
+set(CMAKE_CXX_STANDARD 17)
+
+fair_summary_global_cxx_flags_standard()
+
+assert_regex_in_message_lines("STATUS: +GLOBAL CXX FLAGS +${CMAKE_CXX_FLAGS}")
+assert_regex_in_message_lines("STATUS: +GLOBAL CXX STANDARD +[Cc][+][+]${CMAKE_CXX_STANDARD}")
