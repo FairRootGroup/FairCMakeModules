@@ -1,0 +1,7 @@
+************
+find_package
+************
+
+.. default-domain:: cmake
+
+.. commad:: find_package
