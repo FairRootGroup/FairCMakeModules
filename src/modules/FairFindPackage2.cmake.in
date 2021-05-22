@@ -42,40 +42,41 @@ endif()
 #[=======================================================================[.rst:
 ---------
 
-``find_package2()``
-===================
+.. command:: find_package2
 
-Wrapper around CMake's native :command:`find_package` command to add some
-features and bookkeeping.
+   Wrapper around CMake's native :command:`find_package` command to add some
+   features and bookkeeping.
 
-.. code-block:: cmake
+   .. code-block:: cmake
 
-  find_package2(PRIVATE|PUBLIC|INTERFACE|BUNDLED <pkgname>
-                [VERSION <version>]
-                [COMPONENTS <component> [<component>...]]
-                [ADD_REQUIREMENTS_OF <dep_pkgname> [<dep_pkgname>...]]
-                [<any other native `find_package` option>...])
+     find_package2(PRIVATE|PUBLIC|INTERFACE|BUNDLED <pkgname>
+                   [VERSION <version>]
+                   [COMPONENTS <component> [<component>...]]
+                   [ADD_REQUIREMENTS_OF <dep_pkgname> [<dep_pkgname>...]]
+                   [<any other native `find_package` option>...])
 
+   :param str VERSION: The minimum version requested
+   :param multiple-str COMPONENTS: Request components from the package
 
-The qualifier (\ ``PRIVATE|PUBLIC|INTERFACE|BUNDLED``\ ) is used to
-populate the variables
-:variable:`PROJECT_[INTERFACE]_<pkgname>_([VERSION]|[COMPONENTS]|PACKAGE_DEPENDENCIES)`
-accordingly. This bookkeeping information is used to print a dependencies
-found summary table and in the generation of a CMake package. ``BUNDLED``
-decays to ``PUBLIC`` if the variable `<pkgname>_BUNDLED` is false and to
-``PRIVATE`` otherwise.
+   The qualifier (\ ``PRIVATE|PUBLIC|INTERFACE|BUNDLED``\ ) is used to
+   populate the variables
+   :variable:`PROJECT_[INTERFACE]_<pkgname>_([VERSION]|[COMPONENTS]|PACKAGE_DEPENDENCIES)`
+   accordingly. This bookkeeping information is used to print a dependencies
+   found summary table and in the generation of a CMake package. ``BUNDLED``
+   decays to ``PUBLIC`` if the variable `<pkgname>_BUNDLED` is false and to
+   ``PRIVATE`` otherwise.
 
-When a dependending package is listed with ``ADD_REQUIREMENTS_OF`` the
-variables :variable:`<dep_pkgname>_<pkgname>_VERSION|COMPONENTS` are looked
-up and merged with ``VERSION`` (selected highest version) and ``COMPONENTS``
-(deduplicated) requirements. ``COMPONENTS`` and ``VERSION`` args are then
-just passed to :command:`find_package`.
+   When a dependending package is listed with ``ADD_REQUIREMENTS_OF`` the
+   variables :variable:`<dep_pkgname>_<pkgname>_VERSION|COMPONENTS` are looked
+   up and merged with ``VERSION`` (selected highest version) and ``COMPONENTS``
+   (deduplicated) requirements. ``COMPONENTS`` and ``VERSION`` args are then
+   just passed to :command:`find_package`.
 
-.. versionchanged:: 0.2.0
+   .. versionchanged:: 0.2.0
 
-The ``ADD_REQUIREMENTS_OF`` argument is now a no-op and only remains for
-compatibility reasons. :command:`find_package2` now always merges all known
-requirements.
+   The ``ADD_REQUIREMENTS_OF`` argument is now a no-op and only remains for
+   compatibility reasons. :command:`find_package2` now always merges all known
+   requirements.
 
 #]=======================================================================]
 
@@ -166,20 +167,18 @@ endmacro()
 #[=======================================================================[.rst:
 ---------
 
-``find_package2_implicit_dependencies()``
-=========================================
+.. command:: find_package2_implicit_dependencies
 
-.. versionadded:: 0.2.0
+   .. versionadded:: 0.2.0
 
-Loop over all remaining implicit dependencies and :command:`find_package2`
-them.
+   Loop over all remaining implicit dependencies and :command:`find_package2`
+   them.
 
-.. code-block:: cmake
+   .. code-block:: cmake
 
-  find_package2_implicit_dependencies([EXCLUDE <pkg> [<pkg>...]])
+     find_package2_implicit_dependencies([EXCLUDE <pkg> [<pkg>...]])
 
-Listed packages with ``EXCLUDE`` are filtered out.
-
+   Listed packages with ``EXCLUDE`` are filtered out.
 #]=======================================================================]
 
 macro(find_package2_implicit_dependencies)
@@ -222,19 +221,18 @@ endmacro()
 #[=======================================================================[.rst:
 ---------
 
-``fair_generate_package_dependencies()``
-========================================
+.. command:: fair_generate_package_dependencies
 
-.. versionadded:: 0.2.0
+   .. versionadded:: 0.2.0
 
-.. code-block:: cmake
+   .. code-block:: cmake
 
-  find_generate_package_dependencies()
+     find_generate_package_dependencies()
 
-Populates the variable :variable:`PACKAGE_DEPENDENCIES` with a CMake snippet
-from the public dependencies (read from
-:variable:`PROJECT_INTERFACE_PACKAGE_DEPENDENCIES`) that can be included in a
-CMake package config file to export its package dependencies.
+   Populates the variable :variable:`PACKAGE_DEPENDENCIES` with a CMake snippet
+   from the public dependencies (read from
+   :variable:`PROJECT_INTERFACE_PACKAGE_DEPENDENCIES`) that can be included in a
+   CMake package config file to export its package dependencies.
 
 #]=======================================================================]
 

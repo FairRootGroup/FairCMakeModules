@@ -72,6 +72,7 @@ from docutils import io, nodes
 from sphinx.directives import ObjectDescription
 from sphinx.domains import Domain, ObjType
 from sphinx.roles import XRefRole
+from sphinx.util.docfields import TypedField
 from sphinx.util.nodes import make_refnode
 from sphinx import addnodes
 
@@ -308,6 +309,15 @@ class CMakeObject(ObjectDescription):
         if make_index_entry:
             self.indexnode['entries'].append(make_index_entry(name, targetid))
 
+
+class CMakeCommandObject(CMakeObject):
+    doc_field_types = [
+        TypedField('arguments', label='Arguments',
+                   names=('argument', 'arg', 'parameter', 'param'),
+                   typerolename='command', typenames=('paramtype', 'type')),
+    ]
+
+
 class CMakeXRefRole(XRefRole):
 
     # See sphinx.util.nodes.explicit_title_re; \x00 escapes '<'.
@@ -405,7 +415,7 @@ class CMakeDomain(Domain):
         'manual':     ObjType('manual',     'manual'),
     }
     directives = {
-        'command':    CMakeObject,
+        'command':    CMakeCommandObject,
         'envvar':     CMakeObject,
         'genex':      CMakeObject,
         'variable':   CMakeObject,
