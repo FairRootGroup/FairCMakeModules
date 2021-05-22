@@ -31,7 +31,7 @@ On inclusion
 .. versionadded:: 0.2.0
 
 Add this module as a ``PRIVATE`` package dependency if included from the
-@PROJECT_NAME@ package.
+FairCMakeModules package.
 
 #]=======================================================================]
 
