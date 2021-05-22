@@ -33,6 +33,9 @@ if(configure IN_LIST STEPS)
     "-Werror=dev"
     "-DCMAKE_INSTALL_PREFIX:PATH=${test_install_prefix}"
   )
+  if(DOCS_VERSION)
+    list(APPEND options "-DDOCS_VERSION=${DOCS_VERSION}")
+  endif()
   ctest_configure(OPTIONS "${options}")
 endif()
 
