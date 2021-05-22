@@ -42,8 +42,7 @@ endif()
 #[=======================================================================[.rst:
 ---------
 
-``find_package2()``
-===================
+.. command:: find_package2()
 
 Wrapper around CMake's native :command:`find_package` command to add some
 features and bookkeeping.
