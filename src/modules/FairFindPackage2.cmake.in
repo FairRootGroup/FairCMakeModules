@@ -42,18 +42,15 @@ endif()
 #[=======================================================================[.rst:
 ---------
 
-.. command:: find_package2
+.. command::
+   find_package2(PRIVATE|PUBLIC|INTERFACE|BUNDLED <pkgname>
+                 [VERSION <version>]
+                 [COMPONENTS <component> [<component>...]]
+                 [ADD_REQUIREMENTS_OF <dep_pkgname> [<dep_pkgname>...]]
+                 [<any other native `find_package` option>...])
 
    Wrapper around CMake's native :command:`find_package` command to add some
    features and bookkeeping.
-
-   .. code-block:: cmake
-
-     find_package2(PRIVATE|PUBLIC|INTERFACE|BUNDLED <pkgname>
-                   [VERSION <version>]
-                   [COMPONENTS <component> [<component>...]]
-                   [ADD_REQUIREMENTS_OF <dep_pkgname> [<dep_pkgname>...]]
-                   [<any other native `find_package` option>...])
 
    :param str VERSION: The minimum version requested
    :param multiple-str COMPONENTS: Request components from the package

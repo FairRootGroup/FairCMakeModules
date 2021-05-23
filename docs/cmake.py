@@ -317,6 +317,18 @@ class CMakeCommandObject(CMakeObject):
                    typerolename='command', typenames=('paramtype', 'type')),
     ]
 
+    def get_signatures(self):
+        # sigs = super().get_signatures()
+        # return ['\n'.join(sigs)]
+        return [self.arguments[0]]
+
+    def handle_signature(self, sig, signode):
+        # called from sphinx.directives.ObjectDescription.run()
+        node = nodes.literal_block(sig, sig)
+        node['language'] = 'cmake'
+        signode += node
+        return sig
+
 
 class CMakeXRefRole(XRefRole):
 
