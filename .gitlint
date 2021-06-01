@@ -1,0 +1,20 @@
+[general]
+ignore=body-is-missing
+
+# Enable these contrib rules:
+# contrib=contrib-title-conventional-commits
+
+ignore-merge-commits=false
+ignore-revert-commits=false
+ignore-fixup-commits=false
+ignore-squash-commits=false
+
+[title-max-length]
+# https://chris.beams.io/posts/git-commit/#seven-rules
+# No. 2
+# Add 15, so that contrib-title-conventional-commits works better
+line-length=65
+
+# [contrib-title-conventional-commits]
+# types=fix,feature
+
