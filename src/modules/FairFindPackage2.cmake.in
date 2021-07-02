@@ -39,6 +39,63 @@ if(@PROJECT_NAME@_FOUND)
   list(APPEND PROJECT_PACKAGE_DEPENDENCIES @PROJECT_NAME@)
 endif()
 
+# private helper function to find longest common prefix in given
+# true-thy strings
+function(__find_package2_lcp)
+  cmake_parse_arguments(ARGS "" "OUTVAR" "STRINGS" ${ARGN})
+
+  if(NOT ARGS_OUTVAR)
+    message(AUTHOR_WARNING "Parameter OUTVAR required. Skipping.")
+    return()
+  endif()
+
+  if(NOT ARGS_STRINGS)
+    message(AUTHOR_WARNING "Parameter list STRINGS required. Skipping.")
+    return()
+  endif()
+
+  list(LENGTH ARGS_STRINGS __list_length)
+  if(__list_length EQUAL 1)
+    set(${ARGS_OUTVAR} "${ARGS_STRINGS}" PARENT_SCOPE)
+    return()
+  endif()
+
+  set(__lcp)
+  set(__pos 0)
+
+  set(__pos_ok TRUE)
+  while(__pos_ok)
+    set(__current_char)
+    foreach(__str IN LISTS ARGS_STRINGS)
+      if(__str)
+        string(LENGTH "${__str}" __length)
+        if(__length GREATER __pos)
+          string(SUBSTRING "${__str}" ${__pos} 1 __char)
+          string(LENGTH "${__current_char}" __current_char_length)
+          if(NOT __current_char_length)
+            set(__current_char ${__char})
+          else()
+            if(NOT __current_char STREQUAL __char)
+              set(__pos_ok FALSE)
+              break()
+            endif()
+          endif()
+        else()
+          set(__pos_ok FALSE)
+          break()
+        endif()
+      endif()
+    endforeach()
+    string(LENGTH "${__current_char}" __current_char_length)
+    if(__pos_ok AND __current_char_length)
+      string(APPEND __lcp ${__current_char})
+    endif()
+    math(EXPR __pos "${__pos} + 1")
+  endwhile()
+
+  set(${ARGS_OUTVAR} "${__lcp}" PARENT_SCOPE)
+endfunction()
+
 #[=======================================================================[.rst:
 ---------
 

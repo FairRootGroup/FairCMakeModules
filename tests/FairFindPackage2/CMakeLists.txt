@@ -18,6 +18,7 @@ add_module_test(SUITE "find_package2" TEST "simple"
                 PREFIX_PATH ${pkgset1})
 add_module_test(SUITE "find_package2" TEST "merge_requirements"
                 PREFIX_PATH ${pkgset2})
+add_module_test(SUITE "find_package2" TEST "lcp")
 
 add_module_test(SUITE "fair_generate_package_dependencies" TEST "simple"
                 PREFIX_PATH ${pkgset1})
