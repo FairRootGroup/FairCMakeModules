@@ -110,6 +110,7 @@ features and bookkeeping.
   find_package2(PRIVATE|PUBLIC|INTERFACE|BUNDLED <pkgname>
                 [VERSION <version>]
                 [COMPONENTS <component> [<component>...]]
+                [OPTIONAL_COMPONENTS <component> [<component>...]]
                 [ADD_REQUIREMENTS_OF <dep_pkgname> [<dep_pkgname>...]]
                 [<any other native `find_package` option>...])
 
@@ -140,6 +141,8 @@ By default :command:`find_package2` tries to determine the install prefix if
 the package is found. The result is populated to the variable
 :variable:`<pkgname>_PREFIX``. This behaviour can be disabled by setting the
 :variable:`FAIR_NO_AUTO_DETECT_PREFIX` to ``ON``.
+
+Support for ``OPTIONAL_COMPONENTS`` was added.
 
 #]=======================================================================]
 
@@ -404,12 +407,14 @@ endmacro()
 
 .. code-block:: cmake
 
-  find_generate_package_dependencies()
+  fair_generate_package_dependencies()
 
 Populates the variable :variable:`PACKAGE_DEPENDENCIES` with a CMake snippet
 from the public dependencies (read from
 :variable:`PROJECT_INTERFACE_PACKAGE_DEPENDENCIES`) that can be included in a
 CMake package config file to export its package dependencies.
+
+These exported dependencies will be respected by :command:`find_package2`.
 
 #]=======================================================================]
 

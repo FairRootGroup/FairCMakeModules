@@ -12,6 +12,9 @@ New
 * :command:`find_package2` auto-detects the install prefix and populates the result in
   :variable:`<pkgname>_PREFIX`. Can be disabled globally via
   :variable:`FAIR_NO_AUTO_DETECT_PREFIX`.
+* :command:`find_package2` handles ``OPTIONAL_COMPONENTS``.
+  :command:`fair_generate_package_dependencies` generates appropriate
+  entries.
 
 
 **v0.2.0 (beta)** 2021-05-24
