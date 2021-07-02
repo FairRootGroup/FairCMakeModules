@@ -3,10 +3,16 @@ Changelog
 *********
 .. View rendered on https://fairrootgroup.github.io/FairCMakeModules/latest/changelog.html
 
-Unreleased
-==========
+Unreleased **v1.0.0** 2021-xx-xx
+================================
 
-(empty)
+New
+---
+
+* :command:`find_package2` auto-detects the install prefix and populates the result in
+  :variable:`<pkgname>_PREFIX`. Can be disabled globally via
+  :variable:`FAIR_NO_AUTO_DETECT_PREFIX`.
+
 
 **v0.2.0 (beta)** 2021-05-24
 ============================
