@@ -105,14 +105,17 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Changelog</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#unreleased">Unreleased</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#v0-2-0-beta-2021-05-24"><strong>v0.2.0 (beta)</strong> 2021-05-24</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#changed">Changed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#unreleased-v1-0-0-2021-xx-xx">Unreleased <strong>v1.0.0</strong> 2021-xx-xx</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#new">New</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#v0-1-0-beta-2021-04-24"><strong>v0.1.0 (beta)</strong> 2021-04-24</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#v0-2-0-beta-2021-05-24"><strong>v0.2.0 (beta)</strong> 2021-05-24</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#changed">Changed</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id1">New</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-1-0-beta-2021-04-24"><strong>v0.1.0 (beta)</strong> 2021-04-24</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">New</a></li>
 </ul>
 </li>
 </ul>
@@ -218,21 +221,28 @@
             
   <div class="section" id="changelog">
 <h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="unreleased">
-<h2>Unreleased<a class="headerlink" href="#unreleased" title="Permalink to this headline">¶</a></h2>
-<p>(empty)</p>
+<div class="section" id="unreleased-v1-0-0-2021-xx-xx">
+<h2>Unreleased <strong>v1.0.0</strong> 2021-xx-xx<a class="headerlink" href="#unreleased-v1-0-0-2021-xx-xx" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="new">
+<h3>New<a class="headerlink" href="#new" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><span class="target" id="index-0-command:find_package2"></span><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">find_package2()</span></code> auto-detects the install prefix and populates the result in
+<span class="target" id="index-0-variable:&lt;pkgname&gt;_PREFIX"></span><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">&lt;pkgname&gt;_PREFIX</span></code>. Can be disabled globally via
+<span class="target" id="index-0-variable:FAIR_NO_AUTO_DETECT_PREFIX"></span><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">FAIR_NO_AUTO_DETECT_PREFIX</span></code>.</p></li>
+</ul>
+</div>
 </div>
 <div class="section" id="v0-2-0-beta-2021-05-24">
 <h2><strong>v0.2.0 (beta)</strong> 2021-05-24<a class="headerlink" href="#v0-2-0-beta-2021-05-24" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="changed">
 <h3>Changed<a class="headerlink" href="#changed" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p><span class="target" id="index-0-command:find_package2"></span><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">find_package2()</span></code>’s option <code class="docutils literal notranslate"><span class="pre">ADD_REQUIREMENTS_OF</span></code> is now a no-op. All
+<li><p><span class="target" id="index-1-command:find_package2"></span><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">find_package2()</span></code>’s option <code class="docutils literal notranslate"><span class="pre">ADD_REQUIREMENTS_OF</span></code> is now a no-op. All
 known requirements are merged by default.</p></li>
 </ul>
 </div>
-<div class="section" id="new">
-<h3>New<a class="headerlink" href="#new" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id1">
+<h3>New<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>In module <span class="target" id="index-0-module:FairFindPackage2"></span><a class="reference internal" href="module/FairFindPackage2.html#module:FairFindPackage2" title="FairFindPackage2"><code class="xref cmake cmake-module docutils literal notranslate"><span class="pre">FairFindPackage2</span></code></a></p>
 <ul>
@@ -248,8 +258,8 @@ known requirements are merged by default.</p></li>
 </div>
 <div class="section" id="v0-1-0-beta-2021-04-24">
 <h2><strong>v0.1.0 (beta)</strong> 2021-04-24<a class="headerlink" href="#v0-1-0-beta-2021-04-24" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id1">
-<h3>New<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h3>New<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Module <span class="target" id="index-1-module:FairFindPackage2"></span><a class="reference internal" href="module/FairFindPackage2.html#module:FairFindPackage2" title="FairFindPackage2"><code class="xref cmake cmake-module docutils literal notranslate"><span class="pre">FairFindPackage2</span></code></a></p></li>
 </ul>
