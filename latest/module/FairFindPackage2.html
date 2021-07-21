@@ -92,7 +92,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">General</span></p>
+              <p class="caption" role="heading"><span class="caption-text">General</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../installation.html#from-source">From Source</a></li>
@@ -121,7 +121,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">Modules</span></p>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">FairFindPackage2</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#on-inclusion">On inclusion</a></li>
@@ -142,7 +142,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">Contributing</span></p>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../issues.html">Bugs, Questions, Feature Requests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../development.html">Notes for developers</a><ul>
@@ -250,6 +250,7 @@ features and bookkeeping.</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">find_package2(</span><span class="no">PRIVATE</span><span class="p">|</span><span class="no">PUBLIC</span><span class="p">|</span><span class="no">INTERFACE</span><span class="p">|</span><span class="no">BUNDLED</span><span class="w"> </span><span class="nv">&lt;pkgname&gt;</span><span class="w"></span>
 <span class="w">              </span><span class="p">[</span><span class="no">VERSION</span><span class="w"> </span><span class="nv">&lt;version&gt;</span><span class="p">]</span><span class="w"></span>
 <span class="w">              </span><span class="p">[</span><span class="no">COMPONENTS</span><span class="w"> </span><span class="nv">&lt;component&gt;</span><span class="w"> </span><span class="p">[</span><span class="nv">&lt;component&gt;...</span><span class="p">]]</span><span class="w"></span>
+<span class="w">              </span><span class="p">[</span><span class="no">OPTIONAL_COMPONENTS</span><span class="w"> </span><span class="nv">&lt;component&gt;</span><span class="w"> </span><span class="p">[</span><span class="nv">&lt;component&gt;...</span><span class="p">]]</span><span class="w"></span>
 <span class="w">              </span><span class="p">[</span><span class="no">ADD_REQUIREMENTS_OF</span><span class="w"> </span><span class="nv">&lt;dep_pkgname&gt;</span><span class="w"> </span><span class="p">[</span><span class="nv">&lt;dep_pkgname&gt;...</span><span class="p">]]</span><span class="w"></span>
 <span class="w">              </span><span class="p">[</span><span class="nv">&lt;any other native `find_package` option&gt;...</span><span class="p">]</span><span class="nf">)</span><span class="w"></span>
 </pre></div>
@@ -279,6 +280,7 @@ requirements.</p>
 the package is found. The result is populated to the variable
 <span class="target" id="index-0-variable:&lt;pkgname&gt;_PREFIX`"></span><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">&lt;pkgname&gt;_PREFIX`</span></code>. This behaviour can be disabled by setting the
 <span class="target" id="index-0-variable:FAIR_NO_AUTO_DETECT_PREFIX"></span><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">FAIR_NO_AUTO_DETECT_PREFIX</span></code> to <code class="docutils literal notranslate"><span class="pre">ON</span></code>.</p>
+<p>Support for <code class="docutils literal notranslate"><span class="pre">OPTIONAL_COMPONENTS</span></code> was added.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="find-package2-implicit-dependencies">
@@ -299,13 +301,14 @@ them.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 0.2.0.</span></p>
 </div>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">find_generate_package_dependencies()</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">fair_generate_package_dependencies()</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Populates the variable <span class="target" id="index-0-variable:PACKAGE_DEPENDENCIES"></span><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">PACKAGE_DEPENDENCIES</span></code> with a CMake snippet
 from the public dependencies (read from
 <span class="target" id="index-0-variable:PROJECT_INTERFACE_PACKAGE_DEPENDENCIES"></span><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">PROJECT_INTERFACE_PACKAGE_DEPENDENCIES</span></code>) that can be included in a
 CMake package config file to export its package dependencies.</p>
+<p>These exported dependencies will be respected by <span class="target" id="index-3-command:find_package2"></span><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">find_package2()</span></code>.</p>
 </div>
 </div>
 
