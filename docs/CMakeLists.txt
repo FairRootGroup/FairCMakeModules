@@ -22,3 +22,14 @@ add_custom_target(docs
   COMMENT "Generating documentation"
   VERBATIM
 )
+
+foreach(module IN LISTS simple_modules)
+  if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/module/${module}.rst")
+    message(FATAL_ERROR "You must document ${module}!
+
+      Create '${CMAKE_CURRENT_SOURCE_DIR}/module/${module}.rst'
+      Recommended content:
+        .. default-domain:: cmake
+        .. cmake-module:: ../../src/modules/${module}.cmake")
+  endif()
+endforeach()

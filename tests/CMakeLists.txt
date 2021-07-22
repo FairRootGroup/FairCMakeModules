@@ -9,5 +9,6 @@
 include(TestLib)
 
 add_module_tests(MODULE FairFindPackage2 PATH "${CMAKE_BINARY_DIR}/src/modules")
-add_module_tests(MODULE FairFormattedOutput)
-add_module_tests(MODULE FairSummary)
+foreach(module IN LISTS simple_modules)
+  add_module_tests(MODULE ${module})
+endforeach()

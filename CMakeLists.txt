@@ -29,6 +29,12 @@ string(TOLOWER "${PROJECT_NAME}" PROJECT_NAME_LOWER)
 set(PROJECT_INSTALL_DATADIR "${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME_LOWER}")
 set(PROJECT_INSTALL_MODULESDIR "${PROJECT_INSTALL_DATADIR}/modules")
 
+# Modules that are just installed and can be used straight away:
+set(simple_modules
+    FairFormattedOutput
+    FairSummary
+)
+
 add_subdirectory(src)
 add_subdirectory(tests)
 
