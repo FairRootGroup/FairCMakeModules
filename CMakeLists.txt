@@ -11,7 +11,6 @@ cmake_policy(VERSION 3.15...3.20)
 
 project(FairCMakeModules VERSION 0.2.0 LANGUAGES CXX
         HOMEPAGE_URL "https://github.com/FairRootGroup/FairCMakeModules")
-message(STATUS "${PROJECT_NAME} Version ${PROJECT_VERSION}")
 
 if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release)
@@ -20,7 +19,12 @@ endif()
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
 include(CTest)
+list(PREPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/src/modules")
 list(PREPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+include(FairProjectConfig)
+
+fair_get_git_version()
+message(STATUS "${PROJECT_NAME} Version ${PROJECT_VERSION} (${PROJECT_GIT_VERSION})")
 
 set(PACKAGE_INSTALL_DESTINATION
   ${CMAKE_INSTALL_DATAROOTDIR}/cmake/${PROJECT_NAME}-${PROJECT_VERSION}
@@ -33,6 +37,7 @@ set(PROJECT_INSTALL_MODULESDIR "${PROJECT_INSTALL_DATADIR}/modules")
 set(simple_modules
     FairFormattedOutput
     FairSummary
+    FairProjectConfig
 )
 
 add_subdirectory(src)

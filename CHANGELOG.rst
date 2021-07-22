@@ -15,6 +15,7 @@ New
 * :command:`find_package2` handles ``OPTIONAL_COMPONENTS``.
   :command:`fair_generate_package_dependencies` generates appropriate
   entries.
+* Module :module:`FairProjectConfig`
 
 
 **v0.2.0 (beta)** 2021-05-24
