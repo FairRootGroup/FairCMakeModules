@@ -1,5 +1,5 @@
 ********************
-Notes for developers
+Notes for Developers
 ********************
 
 .. contents::
@@ -46,16 +46,36 @@ CMake
 
   * For project CMake code see the top-level ``CMakeLists.txt``. Bump this
     minimum required version if necessary.
-  * For installed modules add the following header (Adapt the version as
-    necessary):
+  * For installed modules see the next section.
 
-.. code-block:: cmake
+Adding a new, Simple Module
+===========================
 
-  if(CMAKE_VERSION VERSION_LESS 3.12)
-    message(FATAL_ERROR "Module FairFindPackage2 requires CMake 3.12 or later!")
-  endif()
+A simple module is a CMake module that can be used directly.
+Most modules are of this kind.
 
-  include_guard(GLOBAL)
+* Add it to ``src/modules/``, prefix it with ``Fair``.
+* Add the following header (Adapt the version as necessary):
+
+  .. code-block:: cmake
+
+    if(CMAKE_VERSION VERSION_LESS 3.12)
+      message(FATAL_ERROR "Module FairYourModule requires CMake 3.12 or later!")
+    endif()
+
+    include_guard(GLOBAL)
+
+* Add its name to the ``simple_modules`` list in the top ``CMakeLists.txt``.
+  This will automatically
+
+  * mark it for installation.
+  * add some basic tests for it.
+  * check for link in the documentation tree.
+
+* Add documentation link in ``docs/module/`` (see sibling files there).
+
+* Create specific tests in ``tests/FairYourModule/``.
+  See sibling directories to get some ideas.
 
 
 Changelog and Releases

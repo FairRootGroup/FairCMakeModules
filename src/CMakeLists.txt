@@ -13,11 +13,14 @@ configure_file(
   @ONLY
 )
 
+list(TRANSFORM simple_modules APPEND ".cmake"
+     OUTPUT_VARIABLE install_simple_modules)
+list(TRANSFORM install_simple_modules PREPEND "modules/")
+
 install(
   FILES
     ${CMAKE_CURRENT_BINARY_DIR}/modules/FairFindPackage2.cmake
-    modules/FairFormattedOutput.cmake
-    modules/FairSummary.cmake
+    ${install_simple_modules}
 
   DESTINATION "${PROJECT_INSTALL_MODULESDIR}"
 )
