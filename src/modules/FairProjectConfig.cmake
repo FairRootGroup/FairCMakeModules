@@ -32,15 +32,30 @@ Requires CMake 3.12 or later.
 
 .. code-block:: cmake
 
-   fair_get_git_version([OUTVAR_PREFIX prefix])
+   fair_get_git_version([OUTVAR_PREFIX prefix]
+                        [TAGS_ONLY] [REQUIRED])
 
 The function checks git attributes of the current tree.
 If it can't detect anything useful (becausee Git is not
 installed, or because there is no git repository), it will
 not touch any output variables at all. 
 
-The ``OUTVAR_PREFIX`` option sets the prefix for created
-variables. It defaults to ``"PROJECT"``.
+``OUTVAR_PREFIX``
+    This option sets the prefix for created
+    variables. It defaults to ``"PROJECT"``.
+
+``TAGS_ONLY``
+    This option tells Git to search for tags and use them
+    as base for the returned information.
+    If this option is not given, Git can also return a
+    (shortened) commit hash.
+    (Current implementation detail: not passing this option
+    will pass ``--always`` to ``git describe``.)
+
+``REQUIRED``
+    If no suitable information can be detected (for example
+    ``TAGS_ONLY`` is given, but no tags exist, or no git
+    repository exists) then a fatal error is raised.
 
 Output variables:
 
@@ -51,22 +66,38 @@ Output variables:
 #]=======================================================================]
 find_package(Git QUIET)
 function(fair_get_git_version)
-  cmake_parse_arguments(PARSE_ARGV 0 ARGS "" "OUTVAR_PREFIX" "")
+  cmake_parse_arguments(PARSE_ARGV 0 ARGS
+                        "REQUIRED;TAGS_ONLY" "OUTVAR_PREFIX" "")
 
   if(NOT ARGS_OUTVAR_PREFIX)
     set(ARGS_OUTVAR_PREFIX PROJECT)
   endif()
 
+  if(NOT ARGS_TAGS_ONLY)
+    set(git_always "--always")
+  endif()
+
   if(GIT_FOUND AND EXISTS ${CMAKE_SOURCE_DIR}/.git)
-    execute_process(COMMAND ${GIT_EXECUTABLE} describe --tags --dirty --match "v*"
+    execute_process(COMMAND ${GIT_EXECUTABLE} describe --tags --dirty ${git_always} --match "v*"
       OUTPUT_VARIABLE git_version
       OUTPUT_STRIP_TRAILING_WHITESPACE
+      ERROR_VARIABLE git_error_output
+      RESULT_VARIABLE git_result
       WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
     )
+    if(ARGS_REQUIRED AND (git_error_output OR git_result))
+      message(FATAL_ERROR "git describe failed (return value ${git_result}):\n"
+              "${git_error_output}")
+    endif()
     if(git_version)
-      string(SUBSTRING "${git_version}" 1 -1 ${ARGS_OUTVAR_PREFIX}_GIT_VERSION)
-      set(${ARGS_OUTVAR_PREFIX}_GIT_VERSION
-          "${${ARGS_OUTVAR_PREFIX}_GIT_VERSION}" PARENT_SCOPE)
+      if(git_version MATCHES "^v.*")
+        string(SUBSTRING "${git_version}" 1 -1 git_version)
+      endif()
+      set(${ARGS_OUTVAR_PREFIX}_GIT_VERSION "${git_version}" PARENT_SCOPE)
+    endif()
+  else()
+    if(ARGS_REQUIRED)
+      message(FATAL_ERROR "git not installed or no .git found")
     endif()
   endif()
 endfunction()
