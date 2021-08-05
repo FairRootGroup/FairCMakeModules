@@ -77,6 +77,8 @@ Most modules are of this kind.
 * Create specific tests in ``tests/FairYourModule/``.
   See sibling directories to get some ideas.
 
+* Add your new module to the Changelog.
+
 
 Changelog and Releases
 ======================

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>FairSummary &mdash; FairCMakeModules latest</title>
+  <title>FairProjectConfig &mdash; FairCMakeModules latest</title>
   
 
   
@@ -23,7 +23,7 @@
   
 
   
-    <link rel="canonical" href="https://fairrootgroup.github.io/FairCMakeModules/latest/module/FairSummary.html" />
+    <link rel="canonical" href="https://fairrootgroup.github.io/FairCMakeModules/latest/module/FairProjectConfig.html" />
 
   
   <!--[if lt IE 9]>
@@ -42,8 +42,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Bugs, Questions, Feature Requests" href="../issues.html" />
-    <link rel="prev" title="FairProjectConfig" href="FairProjectConfig.html" /> 
+    <link rel="next" title="FairSummary" href="FairSummary.html" />
+    <link rel="prev" title="FairFormattedOutput" href="FairFormattedOutput.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -135,14 +135,14 @@
 <li class="toctree-l2"><a class="reference internal" href="FairFormattedOutput.html#fair-pad"><code class="docutils literal notranslate"><span class="pre">fair_pad()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="FairProjectConfig.html">FairProjectConfig</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="FairProjectConfig.html#fair-get-git-version"><code class="docutils literal notranslate"><span class="pre">fair_get_git_version()</span></code></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">FairProjectConfig</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#fair-get-git-version"><code class="docutils literal notranslate"><span class="pre">fair_get_git_version()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">FairSummary</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#fair-summary-global-cxx-flags-standard"><code class="docutils literal notranslate"><span class="pre">fair_summary_global_cxx_flags_standard()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#fair-summary-build-types"><code class="docutils literal notranslate"><span class="pre">fair_summary_build_types()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#fair-summary-package-dependencies"><code class="docutils literal notranslate"><span class="pre">fair_summary_package_dependencies()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="FairSummary.html">FairSummary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="FairSummary.html#fair-summary-global-cxx-flags-standard"><code class="docutils literal notranslate"><span class="pre">fair_summary_global_cxx_flags_standard()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="FairSummary.html#fair-summary-build-types"><code class="docutils literal notranslate"><span class="pre">fair_summary_build_types()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="FairSummary.html#fair-summary-package-dependencies"><code class="docutils literal notranslate"><span class="pre">fair_summary_package_dependencies()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -205,13 +205,13 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>FairSummary</li>
+      <li>FairProjectConfig</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/module/FairSummary.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/module/FairProjectConfig.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -224,44 +224,45 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="fairsummary">
-<span id="module:FairSummary"></span><h1>FairSummary<a class="headerlink" href="#fairsummary" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="fairprojectconfig">
+<span id="module:FairProjectConfig"></span><h1>FairProjectConfig<a class="headerlink" href="#fairprojectconfig" title="Permalink to this headline">¶</a></h1>
 <div class="versionadded">
-<p><span class="versionmodified added">New in version 0.2.0.</span></p>
+<p><span class="versionmodified added">New in version 1.0.0.</span></p>
 </div>
 <p>Requires CMake 3.12 or later.</p>
-<p>Depends on <span class="target" id="index-0-module:FairFormattedOutput"></span><a class="reference internal" href="FairFormattedOutput.html#module:FairFormattedOutput" title="FairFormattedOutput"><code class="xref cmake cmake-module docutils literal notranslate"><span class="pre">FairFormattedOutput</span></code></a> (and includes it
-automatically).</p>
 <hr class="docutils" />
-<div class="section" id="fair-summary-global-cxx-flags-standard">
-<h2><code class="docutils literal notranslate"><span class="pre">fair_summary_global_cxx_flags_standard()</span></code><a class="headerlink" href="#fair-summary-global-cxx-flags-standard" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">fair_summary_global_cxx_flags_standard()</span><span class="w"></span>
+<div class="section" id="fair-get-git-version">
+<h2><code class="docutils literal notranslate"><span class="pre">fair_get_git_version()</span></code><a class="headerlink" href="#fair-get-git-version" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">fair_get_git_version(</span><span class="p">[</span><span class="no">OUTVAR_PREFIX</span><span class="w"> </span><span class="nb">prefix</span><span class="p">]</span><span class="w"></span>
+<span class="w">                     </span><span class="p">[</span><span class="no">TAGS_ONLY</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="no">REQUIRED</span><span class="p">]</span><span class="nf">)</span><span class="w"></span>
 </pre></div>
 </div>
-<p>If <span class="target" id="index-0-variable:CMAKE_CXX_FLAGS"></span><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">CMAKE_CXX_FLAGS</span></code>, or <span class="target" id="index-0-variable:CMAKE_CXX_STANDARD"></span><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">CMAKE_CXX_STANDARD</span></code> are set,
-their values are displayed in a nice tabular way.</p>
-</div>
-<hr class="docutils" />
-<div class="section" id="fair-summary-build-types">
-<h2><code class="docutils literal notranslate"><span class="pre">fair_summary_build_types()</span></code><a class="headerlink" href="#fair-summary-build-types" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">fair_summary_build_types()</span><span class="w"></span>
-</pre></div>
-</div>
-<p>Display the available Build Types from
-<span class="target" id="index-0-variable:CMAKE_CONFIGURATION_TYPES"></span><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">CMAKE_CONFIGURATION_TYPES</span></code> in a nice tabular way and
-mark the type, that the user has chosen.</p>
-</div>
-<hr class="docutils" />
-<div class="section" id="fair-summary-package-dependencies">
-<h2><code class="docutils literal notranslate"><span class="pre">fair_summary_package_dependencies()</span></code><a class="headerlink" href="#fair-summary-package-dependencies" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">fair_summary_package_dependencies()</span><span class="w"></span>
-</pre></div>
-</div>
-<p><span class="target" id="index-0-command:find_package2"></span><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">find_package2()</span></code> keeps track of all the found
-packages. This function displays them (including found
-version, requested version, and install prefix) in a nice
-tabulary way.</p>
-<p>The prefix column prints the value of <span class="target" id="index-0-variable:&lt;pkgname&gt;_PREFIX"></span><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">&lt;pkgname&gt;_PREFIX</span></code>.</p>
+<p>The function checks git attributes of the current tree.
+If it can’t detect anything useful (becausee Git is not
+installed, or because there is no git repository), it will
+not touch any output variables at all.</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">OUTVAR_PREFIX</span></code></dt><dd><p>This option sets the prefix for created
+variables. It defaults to <code class="docutils literal notranslate"><span class="pre">&quot;PROJECT&quot;</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">TAGS_ONLY</span></code></dt><dd><p>This option tells Git to search for tags and use them
+as base for the returned information.
+If this option is not given, Git can also return a
+(shortened) commit hash.
+(Current implementation detail: not passing this option
+will pass <code class="docutils literal notranslate"><span class="pre">--always</span></code> to <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">describe</span></code>.)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">REQUIRED</span></code></dt><dd><p>If no suitable information can be detected (for example
+<code class="docutils literal notranslate"><span class="pre">TAGS_ONLY</span></code> is given, but no tags exist, or no git
+repository exists) then a fatal error is raised.</p>
+</dd>
+</dl>
+<p>Output variables:</p>
+<dl class="simple">
+<dt><span class="target" id="index-0-variable:&lt;prefix&gt;_GIT_VERSION"></span><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">&lt;prefix&gt;_GIT_VERSION</span></code></dt><dd><p>A version string that is created from the output of
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">describe</span></code>.</p>
+</dd>
+</dl>
 </div>
 </div>
 
@@ -271,8 +272,8 @@ tabulary way.</p>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../issues.html" class="btn btn-neutral float-right" title="Bugs, Questions, Feature Requests" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="FairProjectConfig.html" class="btn btn-neutral float-left" title="FairProjectConfig" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="FairSummary.html" class="btn btn-neutral float-right" title="FairSummary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="FairFormattedOutput.html" class="btn btn-neutral float-left" title="FairFormattedOutput" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
