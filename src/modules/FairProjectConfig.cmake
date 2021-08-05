@@ -77,7 +77,9 @@ function(fair_get_git_version)
     set(git_always "--always")
   endif()
 
-  if(GIT_FOUND AND EXISTS ${CMAKE_SOURCE_DIR}/.git)
+  if(Git_FOUND)
+    # TODO use this form once this module requires CMake 3.14
+    # execute_process(COMMAND $<TARGET_FILE:Git::Git> describe --tags --dirty ${git_always} --match "v*"
     execute_process(COMMAND ${GIT_EXECUTABLE} describe --tags --dirty ${git_always} --match "v*"
       OUTPUT_VARIABLE git_version
       OUTPUT_STRIP_TRAILING_WHITESPACE
@@ -97,7 +99,7 @@ function(fair_get_git_version)
     endif()
   else()
     if(ARGS_REQUIRED)
-      message(FATAL_ERROR "git not installed or no .git found")
+      message(FATAL_ERROR "Git not installed")
     endif()
   endif()
 endfunction()
