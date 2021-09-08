@@ -16,6 +16,9 @@ New
   :command:`fair_generate_package_dependencies` generates appropriate
   entries.
 * Module :module:`FairProjectConfig`
+* The requested version of FairCMakeModules during
+  :command:`find_package` will show up in
+  :command:`fair_summary_package_dependencies`.
 
 
 **v0.2.0 (beta)** 2021-05-24

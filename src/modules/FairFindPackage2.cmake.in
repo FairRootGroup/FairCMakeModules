@@ -37,6 +37,10 @@ FairCMakeModules package.
 
 if(@PROJECT_NAME@_FOUND)
   list(APPEND PROJECT_PACKAGE_DEPENDENCIES @PROJECT_NAME@)
+  if(_@PROJECT_NAME@_REQUESTED_VERSION)
+    set(PROJECT_@PROJECT_NAME@_VERSION "${_@PROJECT_NAME@_REQUESTED_VERSION}")
+    unset(_@PROJECT_NAME@_REQUESTED_VERSION)
+  endif()
 endif()
 
 # private helper function to find longest common prefix in given

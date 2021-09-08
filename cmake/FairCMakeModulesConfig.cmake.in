@@ -12,4 +12,9 @@ set_and_check(@PROJECT_NAME@_PREFIX "@PACKAGE_CMAKE_INSTALL_PREFIX@")
 
 list(PREPEND CMAKE_MODULE_PATH "@PACKAGE_PROJECT_INSTALL_MODULESDIR@")
 
+# Record the requested version from find_package()
+if(@PROJECT_NAME@_FIND_VERSION)
+  set(_@PROJECT_NAME@_REQUESTED_VERSION "${@PROJECT_NAME@_FIND_VERSION}")
+endif()
+
 check_required_components(@PROJECT_NAME@)
