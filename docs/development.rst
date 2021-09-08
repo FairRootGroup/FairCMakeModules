@@ -88,6 +88,7 @@ Changelog and Releases
 * On releases:
 
   1. Bump the version number adhering to `Semantic Versioning`_
+     (check the :command:`project` command in ``CMakeLists.txt``)
   2. Make a version entry in the ``CHANGELOG.rst`` and move entries from the
      *Unreleased* section. The release manager may perform additional changes
      to the prepared entries in an *editorial* role if it improves readibility.

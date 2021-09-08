@@ -9,7 +9,7 @@
 cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
 cmake_policy(VERSION 3.15...3.20)
 
-project(FairCMakeModules VERSION 0.2.0 LANGUAGES CXX
+project(FairCMakeModules VERSION 1.0.0 LANGUAGES CXX
         HOMEPAGE_URL "https://github.com/FairRootGroup/FairCMakeModules")
 
 if(NOT CMAKE_BUILD_TYPE)
