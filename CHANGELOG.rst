@@ -3,8 +3,14 @@ Changelog
 *********
 .. View rendered on https://fairrootgroup.github.io/FairCMakeModules/latest/changelog.html
 
-Unreleased **v1.0.0** 2021-xx-xx
+Unreleased **v1.1.0** 2021-xx-xx
 ================================
+
+
+**v1.0.0** 2021-09-08
+=====================
+
+First official stable release
 
 New
 ---
