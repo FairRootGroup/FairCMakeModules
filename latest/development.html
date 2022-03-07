@@ -1,77 +1,37 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>Notes for Developers &mdash; FairCMakeModules latest</title>
-  
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="canonical" href="https://fairrootgroup.github.io/FairCMakeModules/latest/development.html" />
-
-  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="Bugs, Questions, Feature Requests" href="issues.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="index.html" class="icon icon-home"> FairCMakeModules
-          
-
-          
           </a>
-
-          
-            
-            
               <div class="version">
                 latest
               </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -79,18 +39,7 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">General</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
@@ -159,73 +108,32 @@
 </li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">FairCMakeModules</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-        
       <li>Notes for Developers</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="_sources/development.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="notes-for-developers">
-<h1>Notes for Developers<a class="headerlink" href="#notes-for-developers" title="Permalink to this headline">¶</a></h1>
+             
+  <section id="notes-for-developers">
+<h1>Notes for Developers<a class="headerlink" href="#notes-for-developers" title="Permalink to this headline"></a></h1>
 <div class="contents local topic" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#source-tree-structure" id="id1">Source Tree Structure</a></p></li>
@@ -235,8 +143,8 @@
 <li><p><a class="reference internal" href="#changelog-and-releases" id="id5">Changelog and Releases</a></p></li>
 </ul>
 </div>
-<div class="section" id="source-tree-structure">
-<h2><a class="toc-backref" href="#id1">Source Tree Structure</a><a class="headerlink" href="#source-tree-structure" title="Permalink to this headline">¶</a></h2>
+<section id="source-tree-structure">
+<h2><a class="toc-backref" href="#id1">Source Tree Structure</a><a class="headerlink" href="#source-tree-structure" title="Permalink to this headline"></a></h2>
 <dl>
 <dt><code class="docutils literal notranslate"><span class="pre">cmake/</span></code></dt><dd><p>Private CMake support files for this package</p>
 </dd>
@@ -254,9 +162,9 @@ be unique enough to minimize chances of conflicts.</p>
 CTest in <code class="docutils literal notranslate"><span class="pre">tests/CMakeLists.txt</span></code>.</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="git">
-<h2><a class="toc-backref" href="#id2">Git</a><a class="headerlink" href="#git" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="git">
+<h2><a class="toc-backref" href="#id2">Git</a><a class="headerlink" href="#git" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p>Commit messages should follow these rules: <a class="reference external" href="https://chris.beams.io/posts/git-commit/">https://chris.beams.io/posts/git-commit/</a></p></li>
 <li><p>You may add a prefix to the commit header, e.g.</p>
@@ -266,9 +174,9 @@ CTest in <code class="docutils literal notranslate"><span class="pre">tests/CMak
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="cmake">
-<h2><a class="toc-backref" href="#id3">CMake</a><a class="headerlink" href="#cmake" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="cmake">
+<h2><a class="toc-backref" href="#id3">CMake</a><a class="headerlink" href="#cmake" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p>Write function and macro names in lower-case letters and parameter keywords
 in upper-case, e.g. <code class="docutils literal notranslate"><span class="pre">list(PREPEND</span> <span class="pre">mylist</span> <span class="pre">newitem)</span></code></p></li>
@@ -281,9 +189,9 @@ minimum required version if necessary.</p></li>
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="adding-a-new-simple-module">
-<h2><a class="toc-backref" href="#id4">Adding a new, Simple Module</a><a class="headerlink" href="#adding-a-new-simple-module" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="adding-a-new-simple-module">
+<h2><a class="toc-backref" href="#id4">Adding a new, Simple Module</a><a class="headerlink" href="#adding-a-new-simple-module" title="Permalink to this headline"></a></h2>
 <p>A simple module is a CMake module that can be used directly.
 Most modules are of this kind.</p>
 <ul>
@@ -310,9 +218,9 @@ This will automatically</p>
 See sibling directories to get some ideas.</p></li>
 <li><p>Add your new module to the Changelog.</p></li>
 </ul>
-</div>
-<div class="section" id="changelog-and-releases">
-<h2><a class="toc-backref" href="#id5">Changelog and Releases</a><a class="headerlink" href="#changelog-and-releases" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="changelog-and-releases">
+<h2><a class="toc-backref" href="#id5">Changelog and Releases</a><a class="headerlink" href="#changelog-and-releases" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p>Changelog entries shall be prepared during the pull request process and added
 to the <em>Unreleased</em> section.</p></li>
@@ -328,54 +236,37 @@ to the prepared entries in an <em>editorial</em> role if it improves readibility
 </ol>
 </li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="issues.html" class="btn btn-neutral float-left" title="Bugs, Questions, Feature Requests" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2021 GSI Helmholtzzentrum fuer Schwerionenforschung GmbH.
-
-    </p>
+    <p>&#169; Copyright 2021 GSI Helmholtzzentrum fuer Schwerionenforschung GmbH.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>
