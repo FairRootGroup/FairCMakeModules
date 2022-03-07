@@ -41,9 +41,9 @@ Find the ``brew`` package formula `here <https://github.com/FairRootGroup/homebr
 Fedora
 ======
 
-Add the FairSoft RPM repository for Fedora 34 ::
+Add the FairSoft RPM repository for Fedora 35 ::
 
-  sudo dnf install https://alfa-ci.gsi.de/packages/rpm/fedora-34-x86_64/fairsoft-release-dev.rpm
+  sudo dnf install https://alfa-ci.gsi.de/packages/rpm/fedora-35-x86_64/fairsoft-release-dev.rpm
 
 and continue with ::
 
