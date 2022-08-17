@@ -1,5 +1,5 @@
 ################################################################################
-#    Copyright (C) 2021 GSI Helmholtzzentrum fuer Schwerionenforschung GmbH    #
+# Copyright (C) 2021-2022 GSI Helmholtzzentrum fuer Schwerionenforschung GmbH  #
 #                                                                              #
 #              This software is distributed under the terms of the             #
 #              GNU Lesser General Public Licence (LGPL) version 3,             #
@@ -7,7 +7,7 @@
 ################################################################################
 
 cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
-cmake_policy(VERSION 3.15...3.20)
+cmake_policy(VERSION 3.15...3.23)
 
 project(FairCMakeModules VERSION 1.0.0 LANGUAGES CXX
         HOMEPAGE_URL "https://github.com/FairRootGroup/FairCMakeModules")
