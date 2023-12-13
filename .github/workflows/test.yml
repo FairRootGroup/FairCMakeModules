@@ -35,7 +35,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Setup cmake
-        uses: jwlawson/actions-setup-cmake@v1.9
+        uses: jwlawson/actions-setup-cmake@v1.14
         with:
           cmake-version: ${{ matrix.cmake }}
       - name: Use cmake
