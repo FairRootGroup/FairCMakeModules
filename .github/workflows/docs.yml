@@ -24,7 +24,7 @@ jobs:
           -D STEPS=clean\;configure\;docs
           -S FairCMakeModules_test.cmake
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4.6
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
           folder: build/docs/html
