@@ -12,6 +12,7 @@ jobs:
     strategy:
       matrix:
         cmake:
+        - '3.29'
         - '3.28'
         - '3.27'
         - '3.26'
