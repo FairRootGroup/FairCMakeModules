@@ -7,11 +7,15 @@ on:
     - '!pr/**'
     - '!dependabot/**'
   pull_request:
+permissions:
+  contents: read
 jobs:
   main:
     strategy:
       matrix:
         cmake:
+        - '3.31'
+        - '3.30'
         - '3.29'
         - '3.28'
         - '3.27'
