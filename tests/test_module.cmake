@@ -6,7 +6,7 @@
 #              GNU Lesser General Public Licence (LGPL) version 3,             #
 #                  copied verbatim in the file "LICENSE"                       #
 ################################################################################
-cmake_minimum_required(VERSION 3.15...3.20)
+cmake_minimum_required(VERSION 3.15...3.30)
 include(CMakePrintHelpers)
 include(TestLib)
 include(${MODULE})
