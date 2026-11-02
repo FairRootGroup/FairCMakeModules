@@ -63,6 +63,23 @@ Output variables:
     A version string that is created from the output of
     ``git describe``.
 
+.. note::
+
+   The function sets the output variables with ``set(... PARENT_SCOPE)``
+   and only if it detected a version. Standard CMake variable scoping
+   rules apply.
+
+   A project can therefore let its users provide a fallback version
+   (for example when building from a tarball without Git metadata) by
+   documenting its ``<prefix>`` and accepting
+
+   .. code-block:: shell
+
+      cmake -D<prefix>_GIT_VERSION=3.1.4 ...
+
+   The fallback does not work together with the ``REQUIRED`` option.
+   A detected Git version takes precedence over the fallback.
+
 #]=======================================================================]
 find_package(Git QUIET)
 function(fair_get_git_version)
