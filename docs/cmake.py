@@ -61,11 +61,6 @@ CMakeLexer.tokens["root"] = [
 
 from docutils.parsers.rst import Directive, directives
 from docutils.transforms import Transform
-try:
-    from docutils.utils.error_reporting import SafeString, ErrorString
-except ImportError:
-    # error_reporting was not in utils before version 0.11:
-    from docutils.error_reporting import SafeString, ErrorString
 
 from docutils import io, nodes
 
@@ -135,10 +130,10 @@ class CMakeModule(Directive):
             raise self.severe('Problems with "%s" directive path:\n'
                               'Cannot encode input file path "%s" '
                               '(wrong locale?).' %
-                              (self.name, SafeString(path)))
+                              (self.name, path))
         except IOError as error:
             raise self.severe('Problems with "%s" directive path:\n%s.' %
-                      (self.name, ErrorString(error)))
+                      (self.name, error))
         raw_lines = f.read().splitlines()
         f.close()
         rst = None
