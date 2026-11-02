@@ -7,7 +7,7 @@
 ################################################################################
 
 cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
-cmake_policy(VERSION 3.15...3.20)
+cmake_policy(VERSION 3.15...3.30)
 
 if(NOT STEPS)
   list(APPEND STEPS clean configure build install test)
