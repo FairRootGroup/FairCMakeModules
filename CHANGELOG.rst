@@ -6,6 +6,20 @@ Changelog
 Unreleased **v1.1.0** 2021-xx-xx
 ================================
 
+Changed
+-------
+
+* Policy range of the build scripts is now ``3.15...3.30``.
+  The minimum required CMake version stays at 3.15.
+
+New
+---
+
+* CI tests CMake 3.30 and 3.31.
+* The developer toolchain can be installed with `mise <https://mise.jdx.dev>`_.
+  See ``mise.toml``.
+* Document how to provide a fallback value for
+  :variable:`<prefix>_GIT_VERSION`.
 
 **v1.0.0** 2021-09-08
 =====================
