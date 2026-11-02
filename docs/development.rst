@@ -26,6 +26,18 @@ Source Tree Structure
     CTest in ``tests/CMakeLists.txt``.
 
 
+Toolchain
+=========
+
+Install `mise <https://mise.jdx.dev>`_ and run ``mise install`` to get CMake
+and Python as pinned in ``mise.toml``. A C++ compiler and Git must come from
+the system. Then use:
+
+``mise run test``
+    Configure, build, install and test.
+``mise run docs``
+    Install the Sphinx requirements and build the documentation.
+
 Git
 ===
 

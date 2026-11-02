@@ -1,0 +1,24 @@
+[tools]
+cmake = "3.30"
+python = "3.12"
+
+[tasks.configure]
+description = "Configure the project"
+run = 'ctest -VV -D "STEPS=clean;configure" -S FairCMakeModules_test.cmake'
+
+[tasks.build]
+description = "Build the project"
+run = 'ctest -VV -D "STEPS=build" -S FairCMakeModules_test.cmake'
+
+[tasks.test]
+description = "Configure, build, install and test"
+run = 'ctest -VV -S FairCMakeModules_test.cmake'
+
+[tasks.docs-deps]
+description = "Install the documentation requirements"
+run = "python -m pip install -r docs/requirements.txt"
+
+[tasks.docs]
+description = "Build the documentation"
+depends = ["docs-deps"]
+run = 'ctest -VV -D "STEPS=clean;configure;docs" -S FairCMakeModules_test.cmake'
